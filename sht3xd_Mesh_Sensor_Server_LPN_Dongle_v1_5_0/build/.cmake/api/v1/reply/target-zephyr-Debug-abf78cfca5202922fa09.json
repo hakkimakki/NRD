@@ -1,0 +1,843 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "zephyr/libzephyr.a"
+		}
+	],
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"zephyr_library_named",
+			"add_dependencies",
+			"target_link_libraries",
+			"target_include_directories",
+			"zephyr_library_include_directories",
+			"add_subdirectory",
+			"target_sources",
+			"zephyr_sources",
+			"include"
+		],
+		"files" : 
+		[
+			"D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/cmake/extensions.cmake",
+			"D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/CMakeLists.txt",
+			"D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/CMakeLists.txt",
+			"D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/misc/generated/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 72,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 416,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 660,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 688,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 420,
+				"parent" : 1
+			},
+			{
+				"file" : 2
+			},
+			{
+				"command" : 5,
+				"file" : 2,
+				"line" : 39,
+				"parent" : 6
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 464,
+				"parent" : 7
+			},
+			{
+				"command" : 6,
+				"file" : 1,
+				"line" : 434,
+				"parent" : 0
+			},
+			{
+				"command" : 9,
+				"file" : 1,
+				"line" : 438,
+				"parent" : 0
+			},
+			{
+				"file" : 3,
+				"parent" : 10
+			},
+			{
+				"command" : 8,
+				"file" : 3,
+				"line" : 18,
+				"parent" : 11
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 71,
+				"parent" : 12
+			},
+			{
+				"command" : 6,
+				"file" : 1,
+				"line" : 441,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 1,
+				"line" : 447,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 1,
+				"line" : 448,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 1,
+				"line" : 461,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 1,
+				"line" : 461,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g  "
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Os"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-imacros"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "D:/Raffael/GitHub/P6_Software_local/my_projects/sht3xd_Mesh_Sensor_Server_LPN_Dongle_v1_5_0/build/zephyr/include/generated/autoconf.h"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-ffreestanding"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-fno-common"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-g"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-mcpu=cortex-m4"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-mthumb"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-mabi=aapcs"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-imacros"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/include/toolchain/zephyr_stdint.h"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wformat"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wformat-security"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wno-format-zero-length"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wno-main"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wno-pointer-sign"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wpointer-arith"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wno-unused-but-set-variable"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Werror=implicit-int"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-fno-asynchronous-unwind-tables"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-fno-pie"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-fno-pic"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-fno-strict-overflow"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-fno-reorder-functions"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-fno-defer-pop"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-fmacro-prefix-map=D:/Raffael/GitHub/P6_Software_local/my_projects/sht3xd_Mesh_Sensor_Server_LPN_Dongle_v1_5_0=CMAKE_SOURCE_DIR"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-fmacro-prefix-map=D:/Raffael/GitHub/P6_Software_local/ncs/zephyr=ZEPHYR_BASE"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-fmacro-prefix-map=D:/Raffael/GitHub/P6_Software_local/ncs=WEST_TOPDIR"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-ffunction-sections"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-fdata-sections"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-std=c99"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-nostdinc"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 5,
+					"define" : "BUILD_VERSION=v2.4.99-ncs1"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "KERNEL"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "NRF52840_XXAA"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "USE_PARTITION_MANAGER=0"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "_FORTIFY_SOURCE=2"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "__PROGRAM_START"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "__ZEPHYR__=1"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 8,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/kernel/include"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/arch/arm/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/my_projects/sht3xd_Mesh_Sensor_Server_LPN_Dongle_v1_5_0/build/zephyr/include/generated"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/soc/arm/nordic_nrf/nrf52"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/settings/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/bluetooth"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/bluetooth/controller/ll_sw/nordic"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/nrf/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/hal/cmsis/CMSIS/Core/Include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/hal/nordic/nrfx"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/hal/nordic/nrfx/drivers/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/hal/nordic/nrfx/mdk"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/modules/hal_nordic/nrfx/."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/crypto/tinycrypt/lib/include"
+				},
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/libc/minimal/include"
+				},
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "c:/gnuarmemb/bin/../lib/gcc/arm-none-eabi/8.3.1/include"
+				},
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "c:/gnuarmemb/bin/../lib/gcc/arm-none-eabi/8.3.1/include-fixed"
+				},
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/nrfxlib/crypto/nrf_cc310_platform/include"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 3,
+			"id" : "syscall_list_h_target::@d36e55b69c1b90fb26b2"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "driver_validation_h_target::@d36e55b69c1b90fb26b2"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "kobj_types_h_target::@d36e55b69c1b90fb26b2"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "zephyr_generated_headers::@d36e55b69c1b90fb26b2"
+		}
+	],
+	"id" : "zephyr::@d36e55b69c1b90fb26b2",
+	"name" : "zephyr",
+	"nameOnDisk" : "libzephyr.a",
+	"paths" : 
+	{
+		"build" : "zephyr",
+		"source" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/cbprintf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/crc32_sw.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/crc16_sw.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/crc8_sw.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/crc7_sw.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/dec.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/fdtable.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/hex.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/notify.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/printk.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/onoff.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/rb.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/sem.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/thread_entry.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/timeutil.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/work_q.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/heap.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/heap-validate.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/cbprintf_complete.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/os/assert.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 13,
+			"compileGroupIndex" : 0,
+			"path" : "build/zephyr/misc/generated/configs.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 14,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/soc/arm/nordic_nrf/validate_base_addresses.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 14,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/soc/arm/nordic_nrf/validate_enabled_instances.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 15,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/logging/log_minimal.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 15,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/fs/nvs/nvs.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 15,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/net/lib/utils/addr_utils.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 15,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/storage/flash_map/flash_map.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 15,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/storage/flash_map/flash_map_default.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 15,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/settings/src/settings_store.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 15,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/settings/src/settings.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 15,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/settings/src/settings_init.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 15,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/settings/src/settings_line.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 15,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/settings/src/settings_nvs.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 15,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/power/power.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 15,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/power/pm_ctrl.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 15,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/power/reboot.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 15,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/power/policy/policy_residency.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 16,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/drivers/clock_control/clock_control_nrf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 16,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/drivers/hwinfo/hwinfo_weak_impl.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 16,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/drivers/hwinfo/hwinfo_nrf.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 16,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/drivers/timer/sys_clock_init.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 16,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/drivers/timer/nrf_rtc_timer.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 17,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/nrfxlib/crypto/nrf_cc310_platform/src/nrf_cc3xx_platform_abort_zephyr.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 17,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/nrfxlib/crypto/nrf_cc310_platform/src/nrf_cc3xx_platform_mutex_zephyr.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 18,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/crypto/tinycrypt/lib/source/utils.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 18,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/crypto/tinycrypt/lib/source/ecc_dh.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 18,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/crypto/tinycrypt/lib/source/ecc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 18,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/crypto/tinycrypt/lib/source/aes_decrypt.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 18,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/crypto/tinycrypt/lib/source/aes_encrypt.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 18,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/crypto/tinycrypt/lib/source/cmac_mode.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

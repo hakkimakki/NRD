@@ -1,0 +1,3 @@
+osource "D:/Raffael/GitHub/P6_Software_local/ncs/nrf/boards/shields/*/Kconfig.shield"
+osource "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/boards/shields/*/Kconfig.shield"
+osource "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/boards/shields/*/Kconfig.shield"

@@ -1,0 +1,33 @@
+
+&spi1 {
+
+	sck-pin = <47>;
+	mosi-pin = <2>;
+	miso-pin = <29>;
+
+	status = "okay";
+	cs-gpios = <&gpio0 31 GPIO_ACTIVE_LOW>; /* 0.31 */
+
+	can1: mcp2515@0 {
+		compatible = "microchip,mcp2515";
+		spi-max-frequency = <1000000>;
+		int-gpios = <&gpio1 13 GPIO_ACTIVE_LOW>; /* 1.13 */
+		status = "okay";
+		label = "CAN_1";
+		reg = <0x0>;
+		osc-freq = <8000000>;
+		bus-speed = <20000>;
+		sjw = <1>;
+		prop-seg = <8>;
+		phase-seg1 = <8>;
+		phase-seg2 = <8>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+	};
+};
+
+/ {
+	aliases {
+		can-primary = &can1;
+	};
+};

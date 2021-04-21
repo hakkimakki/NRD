@@ -1,0 +1,16 @@
+&uart0 {
+	compatible = "nordic,nrf-uarte";
+	status = "disabled";
+	current-speed = <115200>;
+	tx-pin = <20>;
+	rx-pin = <24>;
+	rts-pin = <17>;
+	cts-pin = <22>;
+};
+
+arduino_i2c: &i2c0 {
+	compatible = "nordic,nrf-twi";
+	status = "okay";
+	sda-pin = <20>;
+	scl-pin = <22>;
+};

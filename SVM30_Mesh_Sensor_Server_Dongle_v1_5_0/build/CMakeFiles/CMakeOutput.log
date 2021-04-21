@@ -1,0 +1,43 @@
+The target system is: Generic - 2.4.99 - arm
+The host system is: Windows - 10.0.19042 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: C:/gnuarmemb/bin/arm-none-eabi-gcc.exe 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+
+The C compiler identification is GNU, found in "D:/Raffael/GitHub/P6_Software_local/my_projects/NRD/SVM30_Mesh_Sensor_Server_Dongle_v1_5_0/build/CMakeFiles/3.16.2/CompilerIdC/CMakeCCompilerId.o"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: C:/gnuarmemb/bin/arm-none-eabi-gcc.exe 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+
+The CXX compiler identification is GNU, found in "D:/Raffael/GitHub/P6_Software_local/my_projects/NRD/SVM30_Mesh_Sensor_Server_Dongle_v1_5_0/build/CMakeFiles/3.16.2/CompilerIdCXX/CMakeCXXCompilerId.o"
+
+Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+arm-none-eabi-gcc.exe (GNU Tools for Arm Embedded Processors 8-2019-q3-update) 8.3.1 20190703 (release) [gcc-8-branch revision 273027]
+Copyright (C) 2018 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Performing C SOURCE FILE Test check_fmacro_prefix_map_D__Raffael_GitHub_P6_Software_local_my_projects_NRD_SVM30_Mesh_Sensor_Server_Dongle_v1_5_0_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem__c__gnuarmemb_bin____lib_gcc_arm_none_eabi_8_3_1_include___isystem__c__gnuarmemb_bin____lib_gcc_arm_none_eabi_8_3_1_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0 succeeded with the following output:
+Change Dir: D:/Raffael/GitHub/P6_Software_local/my_projects/NRD/SVM30_Mesh_Sensor_Server_Dongle_v1_5_0/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/ProgramData/chocolatey/bin/ninja.exe cmTC_aa7b8 && [1/2] Building C object CMakeFiles/cmTC_aa7b8.dir/src.c.obj
+[2/2] Linking C executable cmTC_aa7b8
+
+
+Source file was:
+int main(void) { return 0; }
