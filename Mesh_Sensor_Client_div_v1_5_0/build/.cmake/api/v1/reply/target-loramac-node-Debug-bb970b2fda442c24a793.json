@@ -1,0 +1,661 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "zephyr/drivers/lora/libloramac-node.a"
+		}
+	],
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"zephyr_library_named",
+			"add_dependencies",
+			"target_link_libraries",
+			"add_definitions",
+			"target_include_directories",
+			"zephyr_library_include_directories",
+			"target_sources",
+			"zephyr_library_sources",
+			"zephyr_library_sources_ifdef"
+		],
+		"files" : 
+		[
+			"D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/cmake/extensions.cmake",
+			"D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/drivers/lora/CMakeLists.txt",
+			"D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/CMakeLists.txt",
+			"D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/drivers/CMakeLists.txt",
+			"D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/zephyr/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 9,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 416,
+				"parent" : 1
+			},
+			{
+				"file" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 660,
+				"parent" : 3
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 688,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 420,
+				"parent" : 1
+			},
+			{
+				"file" : 3
+			},
+			{
+				"command" : 4,
+				"file" : 3,
+				"line" : 3,
+				"parent" : 7
+			},
+			{
+				"file" : 4
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 5,
+				"parent" : 9
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 464,
+				"parent" : 10
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 6,
+				"parent" : 9
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 464,
+				"parent" : 12
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 7,
+				"parent" : 9
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 464,
+				"parent" : 14
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 8,
+				"parent" : 9
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 464,
+				"parent" : 16
+			},
+			{
+				"command" : 9,
+				"file" : 1,
+				"line" : 13,
+				"parent" : 0
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 1353,
+				"parent" : 18
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 460,
+				"parent" : 19
+			},
+			{
+				"command" : 9,
+				"file" : 1,
+				"line" : 14,
+				"parent" : 0
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 1353,
+				"parent" : 21
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 460,
+				"parent" : 22
+			},
+			{
+				"command" : 9,
+				"file" : 1,
+				"line" : 15,
+				"parent" : 0
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 1353,
+				"parent" : 24
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 460,
+				"parent" : 25
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g  "
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Os"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-imacros"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "D:/Raffael/GitHub/P6_Software_local/my_projects/NRD/Mesh_Sensor_Client_div_v1_5_0/build/zephyr/include/generated/autoconf.h"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-ffreestanding"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fno-common"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-g"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-mcpu=cortex-m4"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-mthumb"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-mabi=aapcs"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-imacros"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/include/toolchain/zephyr_stdint.h"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wformat"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wformat-security"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wno-format-zero-length"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wno-main"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wno-pointer-sign"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wpointer-arith"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wno-unused-but-set-variable"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Werror=implicit-int"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fno-asynchronous-unwind-tables"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fno-pie"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fno-pic"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fno-strict-overflow"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fno-reorder-functions"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fno-defer-pop"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fmacro-prefix-map=D:/Raffael/GitHub/P6_Software_local/my_projects/NRD/Mesh_Sensor_Client_div_v1_5_0=CMAKE_SOURCE_DIR"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fmacro-prefix-map=D:/Raffael/GitHub/P6_Software_local/ncs/zephyr=ZEPHYR_BASE"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fmacro-prefix-map=D:/Raffael/GitHub/P6_Software_local/ncs=WEST_TOPDIR"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-ffunction-sections"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fdata-sections"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-specs=nano.specs"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-std=c99"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 6,
+					"define" : "BUILD_VERSION=v2.4.99-ncs1"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "KERNEL"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "NRF52840_XXAA"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "USE_PARTITION_MANAGER=0"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "_FORTIFY_SOURCE=2"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "__LINUX_ERRNO_EXTENSIONS__"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "__PROGRAM_START"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "__ZEPHYR_SUPERVISOR__"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "__ZEPHYR__=1"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 11,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/zephyr/../src/boards"
+				},
+				{
+					"backtrace" : 13,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/zephyr/../src/mac"
+				},
+				{
+					"backtrace" : 15,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/zephyr/../src/radio"
+				},
+				{
+					"backtrace" : 17,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/zephyr/../src/system"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/my_projects/NRD/Mesh_Sensor_Client_div_v1_5_0/build/zephyr/include/generated"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/soc/arm/nordic_nrf/nrf52"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/lib/libc/newlib/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/settings/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/bluetooth"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/subsys/bluetooth/controller/ll_sw/nordic"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/nrf/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/hal/cmsis/CMSIS/Core/Include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/hal/nordic/nrfx"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/hal/nordic/nrfx/drivers/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/hal/nordic/nrfx/mdk"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/modules/hal_nordic/nrfx/."
+				},
+				{
+					"backtrace" : 6,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/crypto/tinycrypt/lib/include"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/nrfxlib/crypto/nrf_cc310_platform/include"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 4,
+			"id" : "syscall_list_h_target::@d36e55b69c1b90fb26b2"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "zephyr_generated_headers::@d36e55b69c1b90fb26b2"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "driver_validation_h_target::@d36e55b69c1b90fb26b2"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "kobj_types_h_target::@d36e55b69c1b90fb26b2"
+		}
+	],
+	"id" : "loramac-node::@707a7f2c3a132bfa46bd",
+	"name" : "loramac-node",
+	"nameOnDisk" : "libloramac-node.a",
+	"paths" : 
+	{
+		"build" : "zephyr/drivers/lora",
+		"source" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/drivers/lora"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 20,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/drivers/lora/hal_common.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 23,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/drivers/lora/sx12xx_common.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 26,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/drivers/lora/sx1276.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/mac/LoRaMacAdr.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/mac/LoRaMac.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/mac/LoRaMacClassB.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/mac/LoRaMacCommands.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/mac/LoRaMacConfirmQueue.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/mac/LoRaMacCrypto.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/mac/LoRaMacParser.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/mac/LoRaMacSerializer.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/peripherals/soft-se/aes.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/peripherals/soft-se/cmac.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/peripherals/soft-se/soft-se.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/radio/sx1276/sx1276.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/system/timer.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/system/delay.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/system/systime.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/boards/mcu/utilities.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/mac/region/Region.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "D:/Raffael/GitHub/P6_Software_local/ncs/modules/lib/loramac-node/src/mac/region/RegionCommon.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

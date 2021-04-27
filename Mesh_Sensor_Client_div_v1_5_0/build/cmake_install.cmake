@@ -1,4 +1,4 @@
-# Install script for directory: D:/Raffael/GitHub/P6_Software_local/my_projects/Mesh_Sensor_Client_div_v1_5_0
+# Install script for directory: D:/Raffael/GitHub/P6_Software_local/my_projects/NRD/Mesh_Sensor_Client_div_v1_5_0
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("D:/Raffael/GitHub/P6_Software_local/my_projects/Mesh_Sensor_Client_div_v1_5_0/build/zephyr/cmake_install.cmake")
+  include("D:/Raffael/GitHub/P6_Software_local/my_projects/NRD/Mesh_Sensor_Client_div_v1_5_0/build/zephyr/cmake_install.cmake")
 
 endif()
 
@@ -46,5 +46,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/Raffael/GitHub/P6_Software_local/my_projects/Mesh_Sensor_Client_div_v1_5_0/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/Raffael/GitHub/P6_Software_local/my_projects/NRD/Mesh_Sensor_Client_div_v1_5_0/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

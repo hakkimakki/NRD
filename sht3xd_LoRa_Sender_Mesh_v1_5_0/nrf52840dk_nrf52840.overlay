@@ -1,0 +1,31 @@
+&i2c0 { /* SDA P0.26, SCL P0.27, ALERT P1.10 */
+	sht3xd@44 {
+		compatible = "sensirion,sht3xd";
+		reg = <0x44>;
+		label = "SHT3XD";
+		alert-gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
+	};
+};
+
+&spi1 {
+   status = "okay";
+   miso-pin = <29>;
+   cs-gpios = <&gpio0 28 GPIO_ACTIVE_LOW>;
+
+      lora: sx1276@0 {
+       compatible = "semtech,sx1276";
+       reg = <0>;
+       label = "sx1276";
+       reset-gpios = <&gpio0 4 GPIO_ACTIVE_LOW>;
+       dio-gpios = <&gpio0 3 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,<&gpio1 15 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;
+       spi-max-frequency = <1000000>;
+       power-amplifier-output = "pa-boost";
+   };
+
+};
+
+/ {
+   aliases {
+      lora0 = &lora;
+ };
+};

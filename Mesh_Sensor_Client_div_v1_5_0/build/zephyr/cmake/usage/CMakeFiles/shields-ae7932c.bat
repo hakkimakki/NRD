@@ -1,5 +1,5 @@
 @echo off
-cd /D D:\Raffael\GitHub\P6_Software_local\my_projects\Mesh_Sensor_Client_div_v1_5_0\build\zephyr\cmake\usage || (set FAIL_LINE=2& goto :ABORT)
+cd /D D:\Raffael\GitHub\P6_Software_local\my_projects\NRD\Mesh_Sensor_Client_div_v1_5_0\build\zephyr\cmake\usage || (set FAIL_LINE=2& goto :ABORT)
 "C:\Program Files\CMake\bin\cmake.exe" -E echo adafruit_2_8_tft_touch_v2 || (set FAIL_LINE=3& goto :ABORT)
 "C:\Program Files\CMake\bin\cmake.exe" -E echo adafruit_winc1500 || (set FAIL_LINE=4& goto :ABORT)
 "C:\Program Files\CMake\bin\cmake.exe" -E echo atmel_rf2xx || (set FAIL_LINE=5& goto :ABORT)

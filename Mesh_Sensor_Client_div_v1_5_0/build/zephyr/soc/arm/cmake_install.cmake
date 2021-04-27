@@ -34,8 +34,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("D:/Raffael/GitHub/P6_Software_local/my_projects/Mesh_Sensor_Client_div_v1_5_0/build/zephyr/soc/arm/common/cortex_m/cmake_install.cmake")
-  include("D:/Raffael/GitHub/P6_Software_local/my_projects/Mesh_Sensor_Client_div_v1_5_0/build/zephyr/soc/arm/nordic_nrf/cmake_install.cmake")
+  include("D:/Raffael/GitHub/P6_Software_local/my_projects/NRD/Mesh_Sensor_Client_div_v1_5_0/build/zephyr/soc/arm/common/cortex_m/cmake_install.cmake")
+  include("D:/Raffael/GitHub/P6_Software_local/my_projects/NRD/Mesh_Sensor_Client_div_v1_5_0/build/zephyr/soc/arm/nordic_nrf/cmake_install.cmake")
 
 endif()
 

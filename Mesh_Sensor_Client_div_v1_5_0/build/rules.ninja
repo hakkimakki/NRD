@@ -223,7 +223,7 @@ rule C_STATIC_LIBRARY_LINKER__arch__arm__core__aarch32__cortex_m__mpu
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__lib__libc__minimal
+rule C_COMPILER__lib__libc__newlib
   depfile = $DEP_FILE
   deps = gcc
   command = C:\gnuarmemb\bin\arm-none-eabi-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $in
@@ -233,7 +233,7 @@ rule C_COMPILER__lib__libc__minimal
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__lib__libc__minimal
+rule C_STATIC_LIBRARY_LINKER__lib__libc__newlib
   command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E remove $TARGET_FILE && C:\gnuarmemb\bin\arm-none-eabi-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\gnuarmemb\bin\arm-none-eabi-ranlib.exe $TARGET_FILE && $POST_BUILD"
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -291,6 +291,25 @@ rule C_COMPILER__soc__arm__nordic_nrf__nrf52
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__soc__arm__nordic_nrf__nrf52
+  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E remove $TARGET_FILE && C:\gnuarmemb\bin\arm-none-eabi-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\gnuarmemb\bin\arm-none-eabi-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  description = Linking C static library $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for compiling C files.
+
+rule C_COMPILER__boards__arm__nrf52840dongle_nrf52840
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\gnuarmemb\bin\arm-none-eabi-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $in
+  description = Building C object $out
+
+
+#############################################
+# Rule for linking C static library.
+
+rule C_STATIC_LIBRARY_LINKER__boards__arm__nrf52840dongle_nrf52840
   command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E remove $TARGET_FILE && C:\gnuarmemb\bin\arm-none-eabi-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\gnuarmemb\bin\arm-none-eabi-ranlib.exe $TARGET_FILE && $POST_BUILD"
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -424,6 +443,44 @@ rule C_COMPILER__drivers__gpio
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__drivers__gpio
+  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E remove $TARGET_FILE && C:\gnuarmemb\bin\arm-none-eabi-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\gnuarmemb\bin\arm-none-eabi-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  description = Linking C static library $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for compiling C files.
+
+rule C_COMPILER__drivers__spi
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\gnuarmemb\bin\arm-none-eabi-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $in
+  description = Building C object $out
+
+
+#############################################
+# Rule for linking C static library.
+
+rule C_STATIC_LIBRARY_LINKER__drivers__spi
+  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E remove $TARGET_FILE && C:\gnuarmemb\bin\arm-none-eabi-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\gnuarmemb\bin\arm-none-eabi-ranlib.exe $TARGET_FILE && $POST_BUILD"
+  description = Linking C static library $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for compiling C files.
+
+rule C_COMPILER__loramac-node
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\gnuarmemb\bin\arm-none-eabi-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $in
+  description = Building C object $out
+
+
+#############################################
+# Rule for linking C static library.
+
+rule C_STATIC_LIBRARY_LINKER__loramac-node
   command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E remove $TARGET_FILE && C:\gnuarmemb\bin\arm-none-eabi-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\gnuarmemb\bin\arm-none-eabi-ranlib.exe $TARGET_FILE && $POST_BUILD"
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -604,7 +661,7 @@ rule C_STATIC_LIBRARY_LINKER__kernel
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Program Files\CMake\bin\cmake.exe" -SD:\Raffael\GitHub\P6_Software_local\my_projects\Mesh_Sensor_Client_div_v1_5_0 -BD:\Raffael\GitHub\P6_Software_local\my_projects\Mesh_Sensor_Client_div_v1_5_0\build
+  command = "C:\Program Files\CMake\bin\cmake.exe" -SD:\Raffael\GitHub\P6_Software_local\my_projects\NRD\Mesh_Sensor_Client_div_v1_5_0 -BD:\Raffael\GitHub\P6_Software_local\my_projects\NRD\Mesh_Sensor_Client_div_v1_5_0\build
   description = Re-running CMake...
   generator = 1
 

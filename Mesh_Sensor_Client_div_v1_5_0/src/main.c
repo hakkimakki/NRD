@@ -11,44 +11,39 @@
 #include <bluetooth/mesh/models.h>
 #include <bluetooth/mesh/dk_prov.h>
 #include <dk_buttons_and_leds.h>
-#include "model_handler.h"
+#include "bm_blemesh.h"
+#include "bm_lora.h"
+#include "bm_simple_buttons_and_leds.h"
 
-static void bt_ready(int err)
+
+#include <drivers/sensor.h>
+
+struct LORA_PDU
 {
-	if (err) {
-		printk("Bluetooth init failed (err %d)\n", err);
-		return;
-	}
+  struct sensor_value temp;
+  struct sensor_value hum;
+} __attribute__((packed)) lora_pdu; // Attribute informing compiler to pack all members to 8bits or 1byte
 
-	printk("Bluetooth initialized\n");
 
-	dk_leds_init();
-	dk_buttons_init(NULL);
-
-	err = bt_mesh_init(bt_mesh_dk_prov_init(), model_handler_init());
-	if (err) {
-		printk("Initializing mesh failed (err %d)\n", err);
-		return;
-	}
-
-	if (IS_ENABLED(CONFIG_SETTINGS)) {
-		settings_load();
-	}
-
-	/* This will be a no-op if settings_load() loaded provisioning info */
-	bt_mesh_prov_enable(BT_MESH_PROV_ADV | BT_MESH_PROV_GATT);
-
-	printk("Mesh initialized\n");
-}
 
 void main(void)
 {
-	int err;
+	bm_blemesh_enable();
 
-	printk("Initializing...\n");
+	//bm_led0_set(true);
 
-	err = bt_enable(bt_ready);
-	if (err) {
-		printk("Bluetooth init failed (err %d)\n", err);
+
+	
+	bm_lora_init();
+
+	while (true)
+	{
+		bm_lora_recv(&lora_pdu);
+		printk("BEGIN %s NRD/lora/keller/temp\n",bt_mesh_sensor_ch_str_real(&lora_pdu.temp));
+		printk("BEGIN %s NRD/lora/keller/hum\n",bt_mesh_sensor_ch_str_real(&lora_pdu.hum));
 	}
+
+	
+	
+
 }

@@ -51,7 +51,10 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp",
         "bm_rand.h": "c",
-        "bm_simple_buttons_and_leds.h": "c"
+        "bm_simple_buttons_and_leds.h": "c",
+        "lora.h": "c",
+        "sensor.h": "c",
+        "devicetree.h": "c"
     },
     "restructuredtext.confPath": ""
 }
