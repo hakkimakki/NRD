@@ -1,0 +1,22 @@
+&spi1 {
+   status = "okay";
+   miso-pin = <29>;
+   cs-gpios = <&gpio0 28 GPIO_ACTIVE_LOW>;
+
+      lora: sx1276@0 {
+       compatible = "semtech,sx1276";
+       reg = <0>;
+       label = "sx1276";
+       reset-gpios = <&gpio0 4 GPIO_ACTIVE_LOW>;
+       dio-gpios = <&gpio0 3 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,<&gpio1 15 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;
+       spi-max-frequency = <1000000>;
+       power-amplifier-output = "pa-boost";
+   };
+
+};
+
+/ {
+   aliases {
+      lora0 = &lora;
+ };
+};

@@ -1,0 +1,2 @@
+osource "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/soc/$(ARCH)/Kconfig"
+osource "D:/Raffael/GitHub/P6_Software_local/ncs/zephyr/soc/$(ARCH)/*/Kconfig"
