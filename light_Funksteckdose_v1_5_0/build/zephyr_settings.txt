@@ -1,3 +1,0 @@
-"BOARD_ROOT":"D:/Raffael/GitHub/P6_Software_local/ncs/nrf"
-"DTS_ROOT":"D:/Raffael/GitHub/P6_Software_local/ncs/nrf"
-"MODULE_EXT_ROOT":"D:/Raffael/GitHub/P6_Software_local/ncs/nrf"
