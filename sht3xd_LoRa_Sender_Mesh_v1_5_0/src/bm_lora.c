@@ -5,8 +5,13 @@
 #include <sys/util.h>
 #include <zephyr.h>
 #include <logging/log.h>
+#include <sys/crc.h>
 
 #include "bm_lora.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define DEFAULT_RADIO_NODE DT_ALIAS(lora0)
 BUILD_ASSERT(DT_NODE_HAS_STATUS(DEFAULT_RADIO_NODE, okay),
@@ -66,7 +71,16 @@ void bm_lora_send(uint8_t *data, uint32_t data_len)
         printk("LoRa config failed\n");
         return;
     }
-    ret = lora_send(lora_dev, data, data_len);
+
+    // Calc CRC
+    uint16_t crc;
+    crc = crc16_ccitt(0, data, (size_t)data_len);
+    // Append CRC
+    uint8_t *data_crc = malloc((size_t)data_len + sizeof(crc)); // array to hold the result
+    memcpy(data_crc, data, (size_t)data_len);                   // copy data
+    memcpy(data_crc + (size_t)data_len, crc, sizeof(crc));      // copy crc
+
+    ret = lora_send(lora_dev, data_crc, (size_t)data_len + sizeof(crc));
     if (ret < 0)
     {
         printk("LoRa send failed\n");
@@ -95,14 +109,16 @@ uint32_t bm_lora_recv(uint8_t *data)
         return 0;
     }
     /* Block until data arrives */
-		len = lora_recv(lora_dev, data, MAX_DATA_LEN, K_FOREVER,
-				&rssi, &snr);
-		if (len < 0) {
-			printk("LoRa receive failed\n");
-			return 0;
-		}
+    len = lora_recv(lora_dev, data, MAX_DATA_LEN, K_FOREVER,
+                    &rssi, &snr);
+    if (len < 0)
+    {
+        printk("LoRa receive failed\n");
+        return 0;
+    }
+    /* Decode CRC */
 
-		printk("Received data: %s (RSSI:%ddBm, SNR:%ddBm)\n",
-			log_strdup(data), rssi, snr);
-            return len;
+    printk("Received data: %s (RSSI:%ddBm, SNR:%ddBm)\n",
+           log_strdup(data), rssi, snr);
+    return len;
 }
