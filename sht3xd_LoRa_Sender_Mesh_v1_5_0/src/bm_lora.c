@@ -23,7 +23,8 @@ BUILD_ASSERT(DT_NODE_HAS_STATUS(DEFAULT_RADIO_NODE, okay),
 struct device *lora_dev;
 struct lora_modem_config config;
 static int ret, len;
-uint8_t data[MAX_DATA_LEN] = {0};
+uint8_t data_crc[MAX_DATA_LEN] = {0};
+uint16_t crc;
 int16_t rssi;
 int8_t snr;
 
@@ -73,12 +74,10 @@ void bm_lora_send(uint8_t *data, uint32_t data_len)
     }
 
     // Calc CRC
-    uint16_t crc;
     crc = crc16_ccitt(0, data, (size_t)data_len);
-    // Append CRC
-    uint8_t *data_crc = malloc((size_t)data_len + sizeof(crc)); // array to hold the result
+    // Append CRC    
     memcpy(data_crc, data, (size_t)data_len);                   // copy data
-    memcpy(data_crc + (size_t)data_len, crc, sizeof(crc));      // copy crc
+    memcpy(data_crc + (size_t)data_len, &crc, sizeof(crc));      // copy crc
 
     ret = lora_send(lora_dev, data_crc, (size_t)data_len + sizeof(crc));
     if (ret < 0)
@@ -109,14 +108,21 @@ uint32_t bm_lora_recv(uint8_t *data)
         return 0;
     }
     /* Block until data arrives */
-    len = lora_recv(lora_dev, data, MAX_DATA_LEN, K_FOREVER,
+    len = lora_recv(lora_dev, data_crc, MAX_DATA_LEN, K_FOREVER,
                     &rssi, &snr);
-    if (len < 0)
+    if (len <= 0)
     {
         printk("LoRa receive failed\n");
         return 0;
     }
     /* Decode CRC */
+    memcpy(&crc, data_crc + (size_t) len - sizeof(crc), sizeof(crc));      // copy crc
+    if (crc == crc16_ccitt(0,data_crc,(size_t) len - sizeof(crc)))
+    {
+        printk("LoRa receive CRC Check failed\n");
+        return 0;
+    } 
+    memcpy(data, data_crc, (size_t) len - sizeof(crc));      // copy data    
 
     printk("Received data: %s (RSSI:%ddBm, SNR:%ddBm)\n",
            log_strdup(data), rssi, snr);
