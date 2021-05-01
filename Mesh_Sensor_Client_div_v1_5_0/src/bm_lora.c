@@ -24,7 +24,7 @@ struct device *lora_dev;
 struct lora_modem_config config;
 static int ret, len;
 uint8_t data_crc[MAX_DATA_LEN] = {0};
-uint16_t crc;
+uint16_t crc, crc_calc;
 int16_t rssi;
 int8_t snr;
 
@@ -117,7 +117,8 @@ uint32_t bm_lora_recv(uint8_t *data)
     }
     /* Decode CRC */
     memcpy(&crc, data_crc + (size_t) len - sizeof(crc), sizeof(crc));      // copy crc
-    if (crc == crc16_ccitt(0,data_crc,(size_t) len - sizeof(crc)))
+    crc_calc = crc16_ccitt(0,data_crc,(size_t) len - sizeof(crc)); // Calculate CRC
+    if (crc != crc_calc)
     {
         printk("LoRa receive CRC Check failed\n");
         return 0;

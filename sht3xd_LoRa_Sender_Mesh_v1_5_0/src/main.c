@@ -7,11 +7,16 @@
 
 #include <drivers/sensor.h>
 
+struct sensor_value temp;
+struct sensor_value hum;
+
 struct LORA_PDU
 {
-  struct sensor_value temp;
-  struct sensor_value hum;
+	double temp;
+	double hum;
 } __attribute__((packed)) lora_pdu; // Attribute informing compiler to pack all members to 8bits or 1byte
+
+
 
 /**@brief Function for application main entry.
  */
@@ -40,23 +45,13 @@ void main(void)
   while (true)
   {
 
-   sht3x_temp_hum_get(&lora_pdu.temp,&lora_pdu.hum);
+   sht3x_temp_hum_get(&temp,&hum);
+
+   lora_pdu.temp = sensor_value_to_double(&temp);
+   lora_pdu.hum = sensor_value_to_double(&hum);
 
    bm_lora_send(&lora_pdu,sizeof(lora_pdu));
 
 		k_sleep(K_MSEC(30000));
-
-
-   /*
-
-    bm_lora_recv(&lora_pdu);
-
-    printf("SHT3XD: %.2f Cel\n",
-           sensor_value_to_double(&lora_pdu.temp));
-
-    printf("SHT3XD: %0.2f %%RH\n",
-           sensor_value_to_double(&lora_pdu.hum));
-
-    */
   }
 }
