@@ -12,6 +12,6 @@ set(BOARD nrf52840dk_nrf52840)
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(gateway)
 
-target_sources(app PRIVATE src/main.c src/bm_gsm_modem.c src/bm_dns.c)
+target_sources(app PRIVATE src/main.c src/bm_gsm_modem.c)
 
 target_include_directories(app PRIVATE include)
