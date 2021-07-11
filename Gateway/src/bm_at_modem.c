@@ -1,11 +1,45 @@
+/* Uses AT-Interface to send data over UDP, resolve dns and send a sms in regular intervalls */
+
 #include <zephyr.h>
 #include <device.h>
 #include <sys/printk.h>
-#include <console/tty.h>
+#include <modem/at_cmd.h>
 
-#define RX_BUFFER_SIZE 512
-#define TX_BUFFER_SIZE 512
-#define UART_DEV_NAME "UART_1"
+int ret;
+
+
+
+
+void bm_gsm_modem_init()
+{
+	
+
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const struct device *uart_dev;
 struct tty_serial* tty_dev;
@@ -44,13 +78,4 @@ void bm_gsm_modem_disconnect()
 	//Wait for disconnected (Event)
 }
 
-void bm_gsm_modem_init()
-{
-	uart_dev = device_get_binding(UART_DEV_NAME);
-	tty_init(tty_dev,uart_dev);
-	//tty_dev->uart_dev = uart_dev;
-	//tty_set_rx_buf(tty_dev,rx_buf,RX_BUFFER_SIZE);
-	//tty_set_tx_buf(tty_dev,tx_buf,TX_BUFFER_SIZE);
 
-	
-}
