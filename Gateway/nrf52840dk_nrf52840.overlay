@@ -1,7 +1,4 @@
 &uart1 {
 	current-speed = <115200>;
-	tx-pin = <12>;
-	rx-pin = <14>;
-	rts-pin = <16>;
-	cts-pin = <18>;
+	compatible = "nordic,nrf-uarte";
 };

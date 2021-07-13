@@ -29,13 +29,10 @@ extern "C" {
 
 
 
-void bm_gsm_modem_init();
+void bm_at_modem_init();
 
-void bm_gsm_modem_reset();
+void bm_at_modem_reset();
 
-void bm_gsm_modem_connect();
-
-void bm_gsm_modem_disconnect();
 
 #ifdef __cplusplus
 }

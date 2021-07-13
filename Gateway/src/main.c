@@ -8,7 +8,7 @@ void main(void)
   // Start Application
   printk("Starting Application...\n");
 
-  bm_gsm_modem_init();
+  bm_at_modem_init();
 
   //bm_gsm_modem_reset();
 

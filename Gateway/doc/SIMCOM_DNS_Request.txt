@@ -1,0 +1,6 @@
+AT+CRESET
+AT+NETOPEN
+AT+CDNSGIP="www.baidu.com"
+
+-> +CDNSGIP: 1,"www.baidu.com","103.235.46.39"
+
