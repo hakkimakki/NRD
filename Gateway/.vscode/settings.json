@@ -57,7 +57,8 @@
         "gsm_ppp.h": "c",
         "ppp.h": "c",
         "modem_cmd_handler.h": "c",
-        "modem_iface_uart.h": "c"
+        "modem_iface_uart.h": "c",
+        "bm_gsm_modem.h": "c"
     },
     "restructuredtext.confPath": ""
 }

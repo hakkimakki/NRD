@@ -2,3 +2,13 @@
 	current-speed = <115200>;
 	compatible = "nordic,nrf-uarte";
 };
+
+/ {
+    outputs {
+		compatible = "gpio-leds";
+		switch: switch_0 {
+			gpios = < &gpio1 0xa 0x11 >;
+			label = "Switch";
+		};
+    };
+};

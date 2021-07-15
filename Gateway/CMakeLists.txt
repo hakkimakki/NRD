@@ -12,6 +12,6 @@ set(BOARD nrf52840dk_nrf52840)
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(app)
 
-target_sources(app PRIVATE src/main.c src/bm_at_modem.c)
+target_sources(app PRIVATE src/main.c src/bm_simple_buttons_and_leds.c src/bm_at_modem.c)
 
 target_include_directories(app PRIVATE include)
