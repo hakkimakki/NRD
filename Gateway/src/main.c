@@ -1,6 +1,6 @@
 #include <zephyr.h>
 #include <bm_simple_buttons_and_leds.h>
-#include <bm_gsm_modem.h>
+#include <bm_at_modem.h>
 
 
 /**@brief Function for application main entry.

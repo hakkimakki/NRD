@@ -18,8 +18,8 @@ along with Bluetooth-Benchamrk.  If not, see <http://www.gnu.org/licenses/>.
 /* AUTHOR 	 :    Raffael Anklin       */
 
 
-#ifndef BM_GSM_MODEM_H__
-#define BM_GSM_MODEM_H__
+#ifndef BM_INFLUXDB_H__
+#define BM_INFLUXDB_H__
 
 
 
@@ -28,14 +28,31 @@ extern "C" {
 #endif
 
 
+typedef struct field_sets {
+   char fieldkey[20];
+   char fieldvalue[20];
+} field_set;
 
-void bm_at_modem_init();
+typedef struct tag_sets {
+   char tagkey[20];
+   char tagvalue[20];
+} tag_set;
 
-void bm_at_modem_reset();
+typedef struct measurments {
+   char measurment_name[20];
+   tag_set tag_set[1];
+   field_set field_set[1];
+   uint64_t timestamp;
+} measurment;
+
+#define NUMBER_OF_MEASURMENTS 255
+
+measurment measurments[NUMBER_OF_MEASURMENTS];
+
 
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* MODEL_HANDLER_H__ */
+#endif /* BM_INFLUXDB_H__ */
