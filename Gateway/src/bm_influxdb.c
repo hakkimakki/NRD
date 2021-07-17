@@ -1,4 +1,4 @@
-/* Uses AT-Interface to send data over UDP, resolve dns and send a sms in regular intervalls */
+/* Influxdb Measurments */
 
 #include <zephyr.h>
 #include <sys/printk.h>

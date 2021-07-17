@@ -45,10 +45,42 @@ typedef struct measurments {
    uint64_t timestamp;
 } measurment;
 
+#define MEAS_MAX_LEN 255
 #define NUMBER_OF_MEASURMENTS 255
 
-measurment measurments[NUMBER_OF_MEASURMENTS];
-
+/* Measurments are stored in a string, separeted according to InfluxDB Line Protocol. see: https://docs.influxdata.com/influxdb/v2.0/reference/syntax/line-protocol/ */
+char measurments[NUMBER_OF_MEASURMENTS][MEAS_MAX_LEN];
+/**
+ * @brief Begin a measurment with required parameters
+ * 
+ * @param meas_name String with the name of the Measurment.
+ * @param field_key Name describing the field value.
+ * @param field_value String encoded field value.
+ * @param timestamp String encoded Timestamp.* 
+ * 
+*/
+void begin_meas(char * meas_name, char * field_key, char * field_val, char * timestamp);
+/**
+ * @brief Add a tag_set to a previously began measurment
+ * 
+ * @param tag_key Name describing the tag value.
+ * @param tag_value String encoded tag value.
+ * 
+*/
+void add_tag(char * tag_key, char * tag_value);
+/**
+ * @brief Add a field_set to a previously began measurment
+ * 
+ * @param field_key Name describing the tag value.
+ * @param field_value String encoded tag value.
+ * 
+*/
+void add_field(char * field_key, char * field_value);
+/**
+ * @brief End a previously began measurment
+ * 
+*/
+void end_meas();
 
 
 #ifdef __cplusplus
