@@ -28,38 +28,40 @@ extern "C" {
 #endif
 
 
-typedef struct field_sets {
-   char fieldkey[20];
-   char fieldvalue[20];
-} field_set;
-
-typedef struct tag_sets {
-   char tagkey[20];
-   char tagvalue[20];
-} tag_set;
-
-typedef struct measurments {
-   char measurment_name[20];
-   tag_set tag_set[1];
-   field_set field_set[1];
-   uint64_t timestamp;
-} measurment;
-
-#define MEAS_MAX_LEN 255
+#define MAX_LEN_OF_MEASURMENT_UUID 255
+#define NUMBER_OF_MEASURMENT_UUIDS 255
 #define NUMBER_OF_MEASURMENTS 255
+#define MAX_NUMBER_OF_FIELDSETS 2
+#define MAX_LEN_OF_FIELD_VALUE 16
 
-/* Measurments are stored in a string, separeted according to InfluxDB Line Protocol. see: https://docs.influxdata.com/influxdb/v2.0/reference/syntax/line-protocol/ */
-char measurments[NUMBER_OF_MEASURMENTS][MEAS_MAX_LEN];
+/**
+ * @brief A Measurment UUID consists of all the metadata fields which have a low cardinality (time invariant).
+ * This results in a unique identifier made up by the measurment_name + tags + field_keys. 
+ * The field_values and timestamps are stored in a separate array ordered by the correspondig measurment_uuid[n]. 
+ * To find the linked field_values and timestamps go over the measurment_uuid[n] and sum up the offset:
+ * offset = (measurment_uuid[n]->linked_timestamps + measurment_uuid[n+1]->linked_timestamps + ...).
+ *   
+ * This way the data with high cardinality (time variant) gets linked to the metadata (measurment_uuids). 
+ * It is assumed that there are a low number of uuids and high number of field_values and timestamps as it should be 
+ * in a static enviroment of sensors.
+ * 
+ * 
+ * Measurments are stored in a string, separeted according to InfluxDB Line Protocol. 
+ *  see: https://docs.influxdata.com/influxdb/v2.0/reference/syntax/line-protocol/ 
+ */
+char measurment_uuids[NUMBER_OF_MEASURMENT_UUIDS][MAX_LEN_OF_MEASURMENT_UUID];
+char field_values[NUMBER_OF_MEASURMENTS][MAX_NUMBER_OF_FIELDSETS][MAX_LEN_OF_FIELD_VALUE];
+uint64_t timestamps[NUMBER_OF_MEASURMENTS];
 /**
  * @brief Begin a measurment with required parameters
  * 
  * @param meas_name String with the name of the Measurment.
  * @param field_key Name describing the field value.
- * @param field_value String encoded field value.
- * @param timestamp String encoded Timestamp.* 
+ * @param field_value Field value (see: https://docs.influxdata.com/influxdb/v2.0/reference/syntax/line-protocol/#data-types-and-format).
+ * @param timestamp Timestamp in epoch time format (see: https://docs.influxdata.com/influxdb/v2.0/reference/syntax/line-protocol/#unix-timestamp).
  * 
 */
-void begin_meas(char * meas_name, char * field_key, char * field_val, char * timestamp);
+void begin_meas(char * meas_name, char * field_key, void * field_val, uint64_t * timestamp);
 /**
  * @brief Add a tag_set to a previously began measurment
  * 
@@ -71,16 +73,41 @@ void add_tag(char * tag_key, char * tag_value);
 /**
  * @brief Add a field_set to a previously began measurment
  * 
- * @param field_key Name describing the tag value.
- * @param field_value String encoded tag value.
+ * @param field_key Name describing the field value.
+ * @param field_value Field value (see: https://docs.influxdata.com/influxdb/v2.0/reference/syntax/line-protocol/#data-types-and-format).
  * 
 */
-void add_field(char * field_key, char * field_value);
+void add_field(char * field_key, void * field_value);
 /**
- * @brief End a previously began measurment
+ * @brief End and store a previously began measurment
+ * 
+ * @note Save the uuid if not already existent. Update the number of linked measurments. 
  * 
 */
 void end_meas();
+/**
+ * @brief Get all stored measurments to the output stdout. 
+ * 
+ * @note Could be used to transfer the data.
+ * 
+*/
+void print_all_meas();
+/**
+ * @brief Delta Encode Field Values and Timestamps 
+ * 
+ * @note To Compress the Sizes for transport is over
+ * 
+*/
+void delta_encode_all_meas();
+/**
+ * @brief Delta decode Field Values and Timestamps 
+ * 
+ * @note To restore Field Values and Timestamps
+ * 
+*/
+void delta_decode_all_meas();
+
+
 
 
 #ifdef __cplusplus
