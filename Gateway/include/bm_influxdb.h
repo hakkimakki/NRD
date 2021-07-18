@@ -56,21 +56,22 @@ extern "C" {
 /* ---------- Metadata ------------------- */
 extern char measurment_uuids[NUMBER_OF_MEASURMENT_UUIDS][MAX_LEN_OF_MEASURMENT_UUID];
 extern uint8_t number_of_measurment_links[NUMBER_OF_MEASURMENT_UUIDS];
-extern uint16_t avg_time_intervalls[NUMBER_OF_MEASURMENT_UUIDS];
-extern uint64_t latest_timestamps[NUMBER_OF_MEASURMENT_UUIDS];
+extern int64_t avg_time_intervalls[NUMBER_OF_MEASURMENT_UUIDS];
+extern int64_t latest_timestamps[NUMBER_OF_MEASURMENT_UUIDS];
 /* ---------- Field Values ------------------- */
 extern char field_values[MAX_NUMBER_OF_FIELDSETS][NUMBER_OF_MEASURMENTS][MAX_LEN_OF_FIELD_VALUE];
+const typedef enum { float_64, int_64, uint_64, string, boolean } field_value_types_t;
 /**
  * @brief Begin a measurment with required parameters
  * 
  * @param meas_name String with the name of the Measurment.
  * @param field_key Name describing the field value.
  * @param field_value Field value (see: https://docs.influxdata.com/influxdb/v2.0/reference/syntax/line-protocol/#data-types-and-format).
- * @param field_val_len Length of data in field_value to copy
+ * @param field_val_typ Type (see: https://docs.influxdata.com/influxdb/v2.0/reference/syntax/line-protocol/#data-types-and-format).
  * @param timestamp Timestamp in epoch time format (see: https://docs.influxdata.com/influxdb/v2.0/reference/syntax/line-protocol/#unix-timestamp).
  * 
 */
-void begin_meas(char * meas_name, char * field_key, void * field_val, size_t field_val_len, uint64_t * timestamp);
+void begin_meas(char *meas_name, char *field_key, void *field_val, field_value_types_t field_val_typ, int64_t *timestamp);
 /**
  * @brief Add a tag_set to a previously began measurment
  * 
@@ -84,10 +85,10 @@ void add_tagset(char * tag_key, char * tag_value);
  * 
  * @param field_key Name describing the field value.
  * @param field_value Field value (see: https://docs.influxdata.com/influxdb/v2.0/reference/syntax/line-protocol/#data-types-and-format).
- * @param field_value_len Length of data in field_value to copy
+ * @param field_val_typ Type (see: https://docs.influxdata.com/influxdb/v2.0/reference/syntax/line-protocol/#data-types-and-format).
  * 
 */
-void add_fieldset(char * field_key, void * field_value, size_t field_value_len);
+void add_fieldset(char *field_key, void *field_value, field_value_types_t field_val_typ);
 /**
  * @brief End and store a previously began measurment
  * 
@@ -102,20 +103,7 @@ void end_meas();
  * 
 */
 void print_all_meas();
-/**
- * @brief Delta Encode Field Values
- * 
- * @note To Compress the Sizes for transport is over
- * 
-*/
-void delta_encode_all_meas();
-/**
- * @brief Delta decode Field Values 
- * 
- * @note To restore Field Values
- * 
-*/
-void delta_decode_all_meas();
+
 
 
 
