@@ -30,7 +30,10 @@ extern "C" {
 #include <bm_influxdb.h>
 
 #define PUSH_INTERVALL_SECONDS 60
-#define SYNC_INTERVALL_SECONDS 600
+#define MAX_PUSH_MESSAGE_SIZE_BYTES 190 //theretical 195...
+
+
+
 
 
 /**
@@ -58,6 +61,8 @@ extern "C" {
  * -- Publish Data to influxdb
  * 
  */
+
+
 
 /**
  * @brief Delta Encode Field Values

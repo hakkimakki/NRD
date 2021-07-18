@@ -22,7 +22,7 @@ void main(void)
 
   static int64_t testval = 42;
 
-  static int64_t testval_2 = 666;
+  static double testval_2 = 666.69;
 
   static char testval_s[12] = "Hello 1";
 
@@ -52,7 +52,7 @@ static bool test_bool = true;
     strcat(field_1,num);
     
     begin_meas("name_2",field_1,&test_bool,boolean,&ts);
-    add_fieldset("field_2",&testval_2,int_64);
+    add_fieldset("field_2",&testval_2,float_64);
     add_tagset("tag_1","hoi");
     add_tagset("tag_2","sali");
     end_meas();

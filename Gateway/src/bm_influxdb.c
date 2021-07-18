@@ -17,6 +17,7 @@ int64_t avg_time_intervalls[NUMBER_OF_MEASURMENT_UUIDS];
 int64_t latest_timestamps[NUMBER_OF_MEASURMENT_UUIDS];
 /* ---------- Field Values ------------------- */
 char field_values[MAX_NUMBER_OF_FIELDSETS][NUMBER_OF_MEASURMENTS][MAX_LEN_OF_FIELD_VALUE];
+bool field_values_free[MAX_NUMBER_OF_FIELDSETS][NUMBER_OF_MEASURMENTS] = { true };
 
 
 /* Helper Pointers */
@@ -287,5 +288,7 @@ void print_all_meas(){
 			//Output Measurment
 			printk("%s\n",buf);			
 		}		
-	}	
+	}
+	//Free all Measurments
+	memset(field_values_free, true, sizeof(field_values_free));
 }
