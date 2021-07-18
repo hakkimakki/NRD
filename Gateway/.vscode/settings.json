@@ -58,7 +58,8 @@
         "ppp.h": "c",
         "modem_cmd_handler.h": "c",
         "modem_iface_uart.h": "c",
-        "bm_gsm_modem.h": "c"
+        "bm_gsm_modem.h": "c",
+        "bm_influxdb.h": "c"
     },
     "restructuredtext.confPath": ""
 }
