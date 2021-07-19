@@ -18,7 +18,7 @@ void main(void)
   bm_init_leds();
   bm_init_switch();
 
-  
+  init_db();
 
   static int64_t testval = 42;
 
@@ -40,7 +40,12 @@ static bool test_bool = true;
 
   ts = k_uptime_get();
 
-  for (size_t i = 0; i < 255; i++)
+  for (size_t j = 0; j < 255; j++)
+  {
+   
+ 
+
+  for (size_t i = 0; i < 250; i++)
   {
     testval_2 = testval_2 + 1;
     ts = k_uptime_get();
@@ -64,6 +69,8 @@ static bool test_bool = true;
 
 
   print_all_meas();
+
+  }
 
   
 

@@ -61,6 +61,8 @@ extern int64_t latest_timestamps[NUMBER_OF_MEASURMENT_UUIDS];
 /* ---------- Field Values ------------------- */
 extern char field_values[MAX_NUMBER_OF_FIELDSETS][NUMBER_OF_MEASURMENTS][MAX_LEN_OF_FIELD_VALUE];
 const typedef enum { float_64, int_64, uint_64, string, boolean } field_value_types_t;
+
+void init_db();
 /**
  * @brief Begin a measurment with required parameters
  * 
