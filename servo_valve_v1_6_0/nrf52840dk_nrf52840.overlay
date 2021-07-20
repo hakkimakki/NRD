@@ -1,0 +1,21 @@
+/ {
+     aliases {
+             pwm-servo = &pwmTest0;
+     };
+};
+
+&pwm1 {
+  status = "okay";
+  ch0-pin = <13>;
+  ch0-inverted;
+ };
+
+/ {
+	pwmdevs {
+		compatible = "pwm-leds";
+		pwmTest0: pwm_device_test_0 {
+			pwms = < &pwm1 0xd >;
+			label = "PWM Test";
+		};
+	};
+};
