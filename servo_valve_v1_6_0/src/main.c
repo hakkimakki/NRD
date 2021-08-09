@@ -1,7 +1,16 @@
 #include "bm_blemesh.h"
 #include "bm_simple_buttons_and_leds.h"
 #include <zephyr.h>
-#include <bm_servo.h>
+#include <bm_servo_valve.h>
+#include <sys/reboot.h>
+
+
+
+void reset(){
+  printk("Reboot now!\n");
+  sys_reboot(SYS_REBOOT_COLD);
+}
+
 
 /**@brief Function for application main entry.
  */
@@ -13,11 +22,11 @@ void main(void) {
   printk("Preprogrammed Randomly Static MAC-Address (LSB): 0x%x, %u \n", LSB_MAC_Address, LSB_MAC_Address);
   // Init Leds
   bm_init_leds();
+  //Init Reset Buttons
+  bm_init_buttons(reset);
   // Start Mesh Operation
   bm_blemesh_enable(); // Will return faster than the Stack is realy ready... keep on waiting in the transition.
 
   bm_init_servo();
-
-  do_test();
 
 }

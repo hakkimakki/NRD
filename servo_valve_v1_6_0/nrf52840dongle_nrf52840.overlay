@@ -1,24 +1,21 @@
 / {
-     inputs {
-		compatible = "gpio-keys";
-		signal: signal_0 {
-			gpios = < &gpio1 0xd 0x11 >;
-			label = "Signal of Switch";
-		};
-        pulse: pulse_0 {
-			gpios = < &gpio1 0xf 0x11 >;
-			label = "Pulse of Switch";
-		};
-    };
-    outputs {
-		compatible = "gpio-leds";
-		switch: switch_0 {
-			gpios = < &gpio1 0xa 0x11 >;
-			label = "Switch";
-		};
-    };
+     aliases {
+             pwm-servo = &pwmTest0;
+     };
 };
 
-&spi1 {
-     status = "disabled";
+&pwm1 {
+  status = "okay";
+  ch0-pin = <15>;
+  ch0-inverted;
+ };
+
+/ {
+	pwmdevs {
+		compatible = "pwm-leds";
+		pwmTest0: pwm_device_test_0 {
+			pwms = < &pwm1 0xf >;
+			label = "PWM Test";
+		};
+	};
 };

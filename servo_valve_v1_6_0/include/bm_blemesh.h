@@ -26,4 +26,6 @@ along with Bluetooth-Benchamrk.  If not, see <http://www.gnu.org/licenses/>.
 */
 void bm_blemesh_enable(void);
 
+void bm_bt_mesh_reset();
+
 #endif

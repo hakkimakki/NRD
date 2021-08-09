@@ -1,0 +1,17 @@
+/ {
+    leds {
+		compatible = "gpio-leds";
+		pumpdrain: pump_drain {
+			gpios = < &gpio1 0x8 0x11 >;
+			label = "Pump for Draining";
+		};
+		valvesdrain: valves_drain {
+			gpios = < &gpio1 0x7 0x11 >;
+			label = "Valves for Draining";
+		};
+    };
+	aliases {
+		pumpdrain = &pumpdrain;
+		valvesdrain = &valvesdrain;
+	};
+};

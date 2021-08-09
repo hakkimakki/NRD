@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "jlink",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/zephyr/zephyr.elf",
+            "name": "Debug (J-Link)",
+            // See https://www.segger.com/downloads/supported-devices.php to set device
+            //"device": "nRF5340_xxAA_NET",
+            "device": "nRF52840_xxAA",
+            "interface": "swd",
+            "ipAddress": null,
+            "serialNumber": null,
+        }
+    ]
+}

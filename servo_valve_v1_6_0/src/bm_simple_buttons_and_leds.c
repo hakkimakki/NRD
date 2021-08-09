@@ -33,8 +33,10 @@ static struct k_work_delayable buttons_debounce;
 static void (*button0_callback)();
 
 static void buttons_debounce_fn(struct k_work *work) {
-  button0_toggel_state = !button0_toggel_state;
-  button0_callback();
+  if(gpio_pin_get(dev_button0,SW0_GPIO_PIN)==true){
+      button0_toggel_state = !button0_toggel_state;
+      button0_callback();
+  }
 }
 
 
@@ -42,10 +44,9 @@ void button_pressed(const struct device *port,
 					struct gpio_callback *cb,
 					gpio_port_pins_t pins) {
   if (port == dev_button0) {
-    k_work_reschedule(&buttons_debounce, K_MSEC(170)); // Debounce the Button
+    k_work_reschedule(&buttons_debounce, K_MSEC(5*1000)); // Debounce the Button
                                                            //button0_callback();
   }
-  //printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
 }
 
 gpio_callback_handler_t button_pressed_handler = &button_pressed;
@@ -172,6 +173,10 @@ bool bm_led3_get() {
   return led3_is_on;
 }
 
+/* Get BUTTON0 Pressed State*/
+bool bm_button0_pressed_state_get() {
+   return (bool) gpio_pin_get(dev_button0, SW0_GPIO_PIN);
+}
 
 /* Get BUTTON0 Toggled State*/
 bool bm_button0_toggle_state_get() {

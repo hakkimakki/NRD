@@ -158,8 +158,12 @@ extern "C" {
 */
 void bm_init_buttons(void (*button0_cb)());
 
-
-
+/**
+* Get the BUTTON0 Pressed State
+*
+* @return State of the BUTTON0 Pressed (0/1)
+*/
+bool bm_button0_pressed_state_get();
 /**
 * Get the BUTTON0 Toggled State
 *

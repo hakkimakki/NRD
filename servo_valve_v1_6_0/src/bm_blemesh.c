@@ -35,8 +35,6 @@ along with Bluetooth-Benchamrk.  If not, see <http://www.gnu.org/licenses/>.
 #include <bluetooth/mesh/main.h>
 #include "bm_simple_buttons_and_leds.h"
 
-
-
 static bool initialized=false; // Flag if the Stack is initialized
 
 static void prov_complete(uint16_t net_idx, uint16_t src)
@@ -104,6 +102,8 @@ static void bt_ready(int err){
 	
 	printk("Buttons and LEDs initialized\n");
 	/* ===================================*/
+
+
 	
 	/* --------------- Init Mesh ------------*/
 	printk("Init Mesh...\n");
@@ -136,6 +136,12 @@ static void bt_ready(int err){
 	{
 		settings_load();
 	}
+	/* --------------- Reset Mesh ------------*/
+	if(bm_button0_pressed_state_get()){
+		printk("Reset Mesh!\n");
+		bt_mesh_reset();
+	}
+
 	/* 
 	err = bt_mesh_provision(net_key, net_idx, flags, iv_index, addr,
 							dev_key);
@@ -150,10 +156,6 @@ static void bt_ready(int err){
 	{
 		printk("Provisioning failed (err %d)\n", err);
 		return;
-	}
-	else
-	{
-		printk("Provisioning completed\n");
 	}
 	/* ===================================*/
 
@@ -176,6 +178,7 @@ void bm_blemesh_enable(void)
 		return;
 	} 
 	printk("Bluetooth initialized\n");
+	
 	/* =====================================*/
 
 	
@@ -187,6 +190,6 @@ void bm_blemesh_enable(void)
 	*/	
 	printk("Configuring done\n");
 
-	//bm_led0_set(true); // Signal that the Configuring was sucessfull
+	
 	/* ===================================*/	
 }

@@ -21,6 +21,7 @@ along with Bluetooth-Benchamrk.  If not, see <http://www.gnu.org/licenses/>.
 #include "bm_simple_buttons_and_leds.h"
 #include "bm_blemesh.h"
 #include "bm_blemesh_model_handler.h"
+#include "bm_servo_valve.h"
 
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/mesh/models.h>
@@ -35,14 +36,17 @@ static void valve_set(struct bt_mesh_onoff_srv *srv, struct bt_mesh_msg_ctx *ctx
 					struct bt_mesh_onoff_status *rsp)
 {
 	// Set DK LED index
-	//bm_switch_set(set->on_off);
+	if (set->on_off){
+		bm_open_servo_valve();
+	} else {
+		bm_close_servo_valve();
+	}	
 }
 
 static void valve_get(struct bt_mesh_onoff_srv *srv, struct bt_mesh_msg_ctx *ctx,
 					struct bt_mesh_onoff_status *rsp)
 {
-	// Send respond Status
-	//rsp->present_on_off = bm_switch_get();
+	rsp->present_on_off = bm_status_servo_valve;
 }
 
 static const struct bt_mesh_onoff_srv_handlers onoff_handlers = {

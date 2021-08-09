@@ -52,5 +52,12 @@
         "typeinfo": "cpp",
         "bm_rand.h": "c"
     },
-    "restructuredtext.confPath": ""
+    "restructuredtext.confPath": "",
+    "spellright.language": [
+        "de"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex"
+    ]
 }
