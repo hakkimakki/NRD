@@ -13,21 +13,21 @@ void main(void)
     printf("Started\n");
     printf("Landys+Gyr E450 Push Listener started\n");
 
-    int ret;    
+    static int ret;    
 
     //CGXByteBuffer reply;
     // Client used to parse received data.
-    CGXDLMSClient cl(true, -1, -1, DLMS_AUTHENTICATION_NONE, NULL, DLMS_INTERFACE_TYPE_HDLC);
+    static CGXDLMSClient cl(true, -1, -1, DLMS_AUTHENTICATION_NONE, NULL, DLMS_INTERFACE_TYPE_HDLC);
 
-    CGXByteBuffer bb;
+    static CGXByteBuffer bb;
     ret = bb.Capacity(2048);
 
     /**
     * Received data. This is used if GBT is used and data is received on
     * several data blocks.
     */
-    CGXReplyData data;
-    CGXReplyData notify;
+    static CGXReplyData data;
+    static CGXReplyData notify;
 
     /** Frames */
     char const *p1 = "7ea084ceff0313128be6e700e04000010000700f0001d3760c07e5061c010f1b32ff800000020e010e020412002809060008190900ff0f02120000020412002809060008190900ff0f01120000020412000109060000600100ff0f02120000020412000309060100010700ff0f02120000020412000309060100020700ff0f02120000b21a7e";

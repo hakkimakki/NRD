@@ -1,0 +1,1 @@
+add_subdirectory_ifdef(CONFIG_SZL_UART_ENABLE uart)

@@ -1,0 +1,127 @@
+<DataNotification>
+  <!-- Invoke ID: 119670 -->
+  <LongInvokeIdAndPriority Value="0001D376" />
+  <!-- 28.06.2021 15:27:50 -->
+  <DateTime Value="07E5061C010F1B32FF800000" />
+  <NotificationBody>
+    <DataValue>
+      <Structure Qty="0E" >
+        <Array Qty="0E" >
+          <Structure Qty="04" >
+            <UInt16 Value="0028" />
+            <!-- 0.8.25.9.0.255 -->
+            <OctetString Value="0008190900FF" />
+            <Int8 Value="02" />
+            <UInt16 Value="0000" />
+          </Structure>
+          <Structure Qty="04" >
+            <UInt16 Value="0028" />
+            <!-- 0.8.25.9.0.255 -->
+            <OctetString Value="0008190900FF" />
+            <Int8 Value="01" />
+            <UInt16 Value="0000" />
+          </Structure>
+          <Structure Qty="04" >
+            <UInt16 Value="0001" />
+            <!-- 0.0.96.1.0.255 -->
+            <OctetString Value="0000600100FF" />
+            <Int8 Value="02" />
+            <UInt16 Value="0000" />
+          </Structure>
+          <Structure Qty="04" >
+            <UInt16 Value="0003" />
+            <!-- 1.0.1.7.0.255 -->
+            <OctetString Value="0100010700FF" />
+            <Int8 Value="02" />
+            <UInt16 Value="0000" />
+          </Structure>
+          <Structure Qty="04" >
+            <UInt16 Value="0003" />
+            <!-- 1.0.2.7.0.255 -->
+            <OctetString Value="0100020700FF" />
+            <Int8 Value="02" />
+            <UInt16 Value="0000" />
+          </Structure>
+          <Structure Qty="04" >
+            <UInt16 Value="0003" />
+            <!-- 1.1.1.8.0.255 -->
+            <OctetString Value="0101010800FF" />
+            <Int8 Value="02" />
+            <UInt16 Value="0000" />
+          </Structure>
+          <Structure Qty="04" >
+            <UInt16 Value="0003" />
+            <!-- 1.1.2.8.0.255 -->
+            <OctetString Value="0101020800FF" />
+            <Int8 Value="02" />
+            <UInt16 Value="0000" />
+          </Structure>
+          <Structure Qty="04" >
+            <UInt16 Value="0003" />
+            <!-- 1.1.5.8.0.255 -->
+            <OctetString Value="0101050800FF" />
+            <Int8 Value="02" />
+            <UInt16 Value="0000" />
+          </Structure>
+          <Structure Qty="04" >
+            <UInt16 Value="0003" />
+            <!-- 1.1.6.8.0.255 -->
+            <OctetString Value="0101060800FF" />
+            <Int8 Value="02" />
+            <UInt16 Value="0000" />
+          </Structure>
+          <Structure Qty="04" >
+            <UInt16 Value="0003" />
+            <!-- 1.1.7.8.0.255 -->
+            <OctetString Value="0101070800FF" />
+            <Int8 Value="02" />
+            <UInt16 Value="0000" />
+          </Structure>
+          <Structure Qty="04" >
+            <UInt16 Value="0003" />
+            <!-- 1.1.8.8.0.255 -->
+            <OctetString Value="0101080800FF" />
+            <Int8 Value="02" />
+            <UInt16 Value="0000" />
+          </Structure>
+          <Structure Qty="04" >
+            <UInt16 Value="0003" />
+            <!-- 1.0.31.7.0.255 -->
+            <OctetString Value="01001F0700FF" />
+            <Int8 Value="02" />
+            <UInt16 Value="0000" />
+          </Structure>
+          <Structure Qty="04" >
+            <UInt16 Value="0003" />
+            <!-- 1.0.51.7.0.255 -->
+            <OctetString Value="0100330700FF" />
+            <Int8 Value="02" />
+            <UInt16 Value="0000" />
+          </Structure>
+          <Structure Qty="04" >
+            <UInt16 Value="0003" />
+            <!-- 1.0.71.7.0.255 -->
+            <OctetString Value="0100470700FF" />
+            <Int8 Value="02" />
+            <UInt16 Value="0000" />
+          </Structure>
+        </Array>
+        <!-- 0.8.25.9.0.255 -->
+        <OctetString Value="0008190900FF" />
+        <!-- 56552773 -->
+        <OctetString Value="3536353532373733" />
+        <UInt32 Value="00000047" />
+        <UInt32 Value="00000000" />
+        <UInt32 Value="000343F2" />
+        <UInt32 Value="00000000" />
+        <UInt32 Value="0000209D" />
+        <UInt32 Value="00000000" />
+        <UInt32 Value="00000000" />
+        <UInt32 Value="0001A022" />
+        <UInt16 Value="0024" />
+        <UInt16 Value="0011" />
+        <UInt16 Value="0010" />
+      </Structure>
+    </DataValue>
+  </NotificationBody>
+</DataNotification>
