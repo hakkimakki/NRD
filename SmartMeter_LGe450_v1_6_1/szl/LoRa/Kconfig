@@ -1,0 +1,10 @@
+config SZL_LORA_ENABLE
+	bool "Enable SZL_LORA"
+	default n
+	select LOG
+	select SPI
+	select GPIO
+	select LORA
+	select LORA_SX12XX
+	select PRINTK
+	

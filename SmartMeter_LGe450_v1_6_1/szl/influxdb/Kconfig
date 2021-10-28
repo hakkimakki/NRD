@@ -1,0 +1,6 @@
+config SZL_INFLUXDB_ENABLE
+	bool "Enable SZL_INFLUXDB"
+	default n
+	select CONFIG_NEWLIB_LIBC
+	select CONFIG_NEWLIB_LIBC_FLOAT_PRINTF
+	

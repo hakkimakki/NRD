@@ -15,6 +15,8 @@
 #include "bm_lora.h"
 #include "bm_simple_buttons_and_leds.h"
 
+#include <szl_usb_cdc_acm.h>
+
 #include <drivers/sensor.h>
 
 #include <stdio.h>
@@ -27,6 +29,8 @@ struct LORA_PDU
 
 void main(void)
 {
+	szl_init_usb_cdc_acm();
+
 	bm_blemesh_enable();
 
 	bm_lora_init();

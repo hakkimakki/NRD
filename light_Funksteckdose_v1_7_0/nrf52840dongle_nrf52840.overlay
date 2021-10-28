@@ -1,0 +1,15 @@
+#include <dt-bindings/gpio/gpio.h>
+
+/ {
+     zephyr,user {
+          handle = <&gpio0>;
+          handles = <&gpio0>, <&gpio1>;
+          switch-gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
+          signal-gpios = <&gpio1 13 GPIO_ACTIVE_HIGH>;
+          pulse-gpios = <&gpio1 15 GPIO_ACTIVE_HIGH>;
+     };
+};
+
+&spi1 {
+     status = "disabled";
+};

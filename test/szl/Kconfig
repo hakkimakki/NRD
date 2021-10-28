@@ -1,0 +1,5 @@
+config SZL_ENABLE
+   bool "Enable Simple Zephyr Library"
+   default y
+
+rsource "*/Kconfig"

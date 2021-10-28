@@ -1,0 +1,4 @@
+config SZL_ADC_ENABLE
+	bool "Enable SZL_UART"
+	default n
+	select CONFIG_ADC
