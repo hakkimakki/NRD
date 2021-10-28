@@ -1,0 +1,41 @@
+/ {
+	aliases {
+		pwm-servo-valve-drain = &pwm_drain_valve;
+		pwm-servo-valve-irrigation = &pwm_irrigation_valve;
+	};
+
+	pwmleds {
+		pwm_drain_valve: pwm_drain_valve {
+			pwms = <&pwm1 31>;
+		};
+		pwm_irrigation_valve: pwm_irrigation_valve {
+			pwms = <&pwm2 29>;
+		};
+	};
+};
+
+
+
+&pwm1 {
+	status = "okay";
+	ch0-pin = <31>;
+	ch0-inverted;
+};
+
+&pwm2 {
+	status = "okay";
+	ch0-pin = <29>;
+	ch0-inverted;
+};
+
+#include <dt-bindings/gpio/gpio.h>
+
+/ {
+     zephyr,user {
+             handle = <&gpio0>;
+             handles = <&gpio0>, <&gpio1>;
+             endrain-gpios = <&gpio1 15 GPIO_ACTIVE_HIGH>;
+			 enirr-gpios = <&gpio1 13 GPIO_ACTIVE_HIGH>;
+			 en5v-gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
+     };
+};

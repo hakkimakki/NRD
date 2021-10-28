@@ -1,0 +1,4 @@
+config SZL_LEB128_ENABLE
+	bool "Enable SZL_LEB128"
+	default n
+	
