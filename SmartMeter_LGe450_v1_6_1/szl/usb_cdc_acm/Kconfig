@@ -1,9 +1,14 @@
 config SZL_USB_CDC_ACM_ENABLE
 	bool "Enable SZL_USB_CDC_ACM"
 	default n
-	select SERIAL
 	select USB
-	select USB_UART_CONSOLE
-	select STDOUT_CONSOLE
 	select USB_DEVICE_STACK
+	select USB_UART_CONSOLE
+	select UART_INTERRUPT_DRIVEN
+	select UART_LINE_CTRL
+
+config UART_CONSOLE_ON_DEV_NAME
+	string "Default override to CDC_ACM_0"
+	default "CDC_ACM_0"
+	
 	

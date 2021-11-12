@@ -1,0 +1,17 @@
+config SZL_UART_ENABLE
+	bool "Enable SZL_UART"
+	default n
+	depends on SZL_ENABLE
+	depends on SERIAL_SUPPORT_INTERRUPT
+	select UART_INTERRUPT_DRIVEN
+	select RING_BUFFER
+
+config SZL_UART_MAX_CONTEXTS
+	int "Maximum Number of SZL UART Contexts"
+	default 3
+	depends on SZL_UART_ENABLE
+
+config SZL_UART_RX_RING_BUF_LEN
+	int "Size of Receive Ring Buffer"
+	default 255
+	depends on SZL_UART_ENABLE

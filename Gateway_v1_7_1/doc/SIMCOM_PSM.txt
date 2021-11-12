@@ -1,0 +1,7 @@
+AT+CRESET
+AT+CPSMS=1,"","","01111001","00000101"
+-> 50sec. Sleeep, 10 sec. awake
+
+AT+CFUN=4 -> Enter FLight Mode
+https://github.com/mcore1976/sim7000gpstracker/blob/master/main7.c
+AT+CFUN=1

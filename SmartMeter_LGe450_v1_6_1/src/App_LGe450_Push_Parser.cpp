@@ -1,5 +1,6 @@
 #include <zephyr.h>
 #include <stdio.h>
+#include <string.h>
 #include "../dlms/include/GXDLMSNotify.h"
 #include "../dlms/include/GXDLMSData.h"
 #include "../dlms/include/GXDLMSClient.h"
@@ -59,6 +60,8 @@ void App_LGe450_Push_Parser::parse(const void* pSource, unsigned long count) {
             //Update clock.
             int Valueindex = 1;
             std::vector<std::string> values;
+            // Init new Meassages
+            Smart_Meter_data = Smart_Meter_data_init;
             for (std::vector<std::pair<CGXDLMSObject *, unsigned char>>::iterator it = objects.begin(); it != objects.end(); ++it)
             {
                 values.clear();
@@ -69,14 +72,34 @@ void App_LGe450_Push_Parser::parse(const void* pSource, unsigned long count) {
                 it->first->GetLogicalName(ln);
                 it->first->GetValues(values);
                 printf("%s %s %d: %s\r\n", CGXDLMSConverter::ToString(it->first->GetObjectType()), ln.c_str(), it->second, values.at(it->second - 1).c_str());
-            }
+                //Fill in the Data
+                if (strcmp("1.0.31.7.0.255",ln.c_str()) == 0) {
+                    Smart_Meter_data.Strom_L1 = (uint16_t)atoi(values.at(it->second - 1).c_str());
+                    new_data_bitmask[0] |= 1 << 0;
+                } else if (strcmp("1.0.51.7.0.255",ln.c_str()) == 0) {
+                    Smart_Meter_data.Strom_L2 = (uint16_t)atoi(values.at(it->second - 1).c_str());
+                    new_data_bitmask[0] |= 1 << 1;
+                } else if (strcmp("1.0.71.7.0.255",ln.c_str()) == 0) {
+                    Smart_Meter_data.Strom_L3 = (uint16_t)atoi(values.at(it->second - 1).c_str());
+                    new_data_bitmask[0] |= 1 << 2;
+                } else if (strcmp("1.0.1.7.0.255",ln.c_str()) == 0) {
+                    Smart_Meter_data.Wirkleistungsbezug = (uint32_t)atoi(values.at(it->second - 1).c_str());
+                    new_data_bitmask[0] |= 1 << 3;
+                } else if (strcmp("1.1.1.8.1.255",ln.c_str()) == 0) {
+                    Smart_Meter_data.Wirkenergiebezug_Tarif_1 = (uint32_t)atoi(values.at(it->second - 1).c_str());
+                    new_data_bitmask[0] |= 1 << 4;
+                } else if (strcmp("1.1.1.8.2.255",ln.c_str()) == 0) {
+                    Smart_Meter_data.Wirkenergiebezug_Tarif_2 = (uint32_t)atoi(values.at(it->second - 1).c_str());
+                    new_data_bitmask[0] |= 1 << 5;
+                } 
+           }
+           //Encode and Send Data
+           k_sem_give(&parser_done_sem);
         }
         printf("Server address: %d Client Address: %d\r\n", notify.GetServerAddress(), notify.GetClientAddress());
         notify.Clear();
         data.Clear();
         bb.Trim();
-        
-        printf("Done\n");
     }    
 }
 

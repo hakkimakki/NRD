@@ -1,0 +1,2 @@
+rsource "szl/Kconfig"
+source "Kconfig.zephyr"

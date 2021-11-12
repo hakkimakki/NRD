@@ -1,0 +1,83 @@
+## Initalization Phase ##
+
+//Module Reset:
+AT+CFUN=1,1
+"SMS Ready"
+
+//Check SIM Status:
+AT+CPIN?
++CPIN:READY
+
+//Check RF Signal:
+AT+CSQ
++CSQ: 27,99
+
+//Check PS service. 1 indicates PS has attached:
+AT+CGATT?
++CGATT: 1
+
+//Query Network information, operator and network.
+AT+COPS?
++COPS: 0,0,"M-Budget Mobile M-Budget Mobile",7
+
+//Query the APN delivered by the network after the CAT-M or NB-IOT network is successfully registered.
+AT+CGNAPN
++CGNAPN: 1,"gprs.swisscom.ch"
+
+//Activate network, Activate 0th PDP.
+AT+CNACT=0,1
++APP PDP: 0,ACTIVE
+
+## DNS Request ##
+
+//Select PDP Index for DNS
+AT+CDNSPDPID=0
+OK
+//DNS Request:
+AT+CDNSGIP="home.villa28.ch",1,1000
++CDNSGIP: 1,"home.villa28.ch","185.119.179.79"
+
+
+## Send SMS Status ##
+//Delete All SMS
+AT+CMGD=0,4
+OK
+//Select message service
+AT+CSMS=0
++CSMS: 1,1,1
+// Set SMS Text Mode
+AT+CMGF=1
+
+//Setup SMS to 444
+AT+CMGS="444"
+>
+//Send SMS with text Status (CTRL+Z) = \1xA
+Status(CTRL+Z)
++CMTI: "SM",0
+//Read SMS -> Wait Some Time ~30s
+AT+CMGR=0
++CMGR: "REC READ","444",,"21/07/14,12:42:24+08"
+"M-Budget Prepaid": Ihr Prepaidguthaben: CHF 14.9. Daten in der Schweiz: 110.0 MB verf▒gbar. Stand vom 14.07.2021 12:42. Angaben ohne Gew▒hr.
+//Delete All SMS
+AT+CMGD=0,4
+
+## Send UDP Data ##
+//Check the 0th PDN/PDP local IP
+AT+CNACT?
++CNACT: 0,1,"10.22.110.235"
++CNACT: 1,0,"0.0.0.0"
++CNACT: 2,0,"0.0.0.0"
++CNACT: 3,0,"0.0.0.0"
+//Create a TCP connection with 0th PDP on 0th connection.
+// Return to URC the first parameter is the identifier, the second parameter is the result of the connection, and // the 0 indicates success.
+AT+CAOPEN=0,0,"UDP","185.119.179.79",63521
++CAOPEN: 0,0
+//Request to send 5 bytes of data
+AT+CASEND=0,5
+OK
+//Close the connection with an identifier of 0.
+AT+CACLOSE=0
+OK
+//Disconnect 0th data connection
+AT+CNACT=0,0
++APP PDP: 0,DEACTIVE

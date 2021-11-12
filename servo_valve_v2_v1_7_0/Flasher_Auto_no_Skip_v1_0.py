@@ -1,7 +1,6 @@
 import os
 import time
 import serial.tools.list_ports
-import pandas as pd
 import subprocess
 
 #pip3 install pandas pyserial

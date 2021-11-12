@@ -30,7 +30,6 @@ size_t szl_encode_uleb128(uint64_t val, uint8_t * dst){
 
 		memcpy(dst+count,&byte,1);
 
-		//dest.push_back(byte);
 		count++;
   	} while (val != 0);
 	return count;
@@ -58,7 +57,6 @@ size_t szl_decode_uleb128(uint8_t* addr, uint64_t* ret) {
 
   while (1) {
     byte = addr[count];
-    //addr++;
     count++;
 
     result |= (byte & 0x7f) << shift;

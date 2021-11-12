@@ -1,0 +1,3 @@
+"BOARD_ROOT":"C:/Users/raffa/Github/ncs/nrf"
+"DTS_ROOT":"C:/Users/raffa/Github/ncs/nrf"
+"MODULE_EXT_ROOT":"C:/Users/raffa/Github/ncs/nrf"
