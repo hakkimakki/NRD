@@ -1,6 +1,0 @@
-add_subdirectory_ifdef(CONFIG_SZL_UART_ENABLE uart)
-add_subdirectory_ifdef(CONFIG_SZL_USB_CDC_ACM_ENABLE usb_cdc_acm)
-add_subdirectory_ifdef(CONFIG_SZL_ADC_ENABLE adc)
-add_subdirectory_ifdef(CONFIG_SZL_INFLUXDB_ENABLE influxdb)
-add_subdirectory_ifdef(CONFIG_SZL_LEB128_ENABLE LEB128)
-add_subdirectory_ifdef(CONFIG_SZL_LORA_ENABLE LoRa)
