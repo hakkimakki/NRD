@@ -1,0 +1,22 @@
+identifier: skb501_nrf52840
+name: SKB501-NRF52840
+type: mcu
+arch: arm
+ram: 256
+flash: 1024
+toolchain:
+  - zephyr
+  - gnuarmemb
+  - xtools
+supported:
+  - adc
+  - ble
+  - counter
+  - gpio
+  - i2c
+  - i2s
+  - ieee802154
+  - pwm
+  - spi
+  - watchdog
+  - netif:openthread

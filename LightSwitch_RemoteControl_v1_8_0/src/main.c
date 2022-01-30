@@ -6,123 +6,69 @@
 
 /* ---------- Led ------------------- */
 #include <zephyr.h>
-#include <drivers/gpio.h>
 #include <hal/nrf_gpio.h>
-static struct gpio_dt_spec led = GPIO_DT_SPEC_GET_OR(DT_ALIAS(led0), gpios,{0});
+#include <nrfx_gpiote.h>
+#include <hal/nrf_gpiote.h>
+
+//Init Reset Button
+static void leds_init()
+{
+  nrf_gpio_cfg_output(DT_GPIO_PIN(DT_ALIAS(led0), gpios));
+  nrf_gpio_pin_set(DT_GPIO_PIN(DT_ALIAS(led0), gpios));
+}
 
 /* ---------- Buttons ------------------- */
-//static const struct gpio_dt_spec button_0 = GPIO_DT_SPEC_GET_OR(DT_ALIAS(sw0), gpios, {0});
-//static const struct device * dev;
-static const struct gpio_dt_spec button_1_on = GPIO_DT_SPEC_GET_OR(DT_ALIAS(sw1on), gpios, {0});
-static const struct gpio_dt_spec button_2_on = GPIO_DT_SPEC_GET_OR(DT_ALIAS(sw2on), gpios, {0});
-static const struct gpio_dt_spec button_3_on = GPIO_DT_SPEC_GET(DT_ALIAS(sw3on), gpios);
-static const struct gpio_dt_spec button_4_on = GPIO_DT_SPEC_GET_OR(DT_ALIAS(sw4on), gpios, {0});
-static const struct gpio_dt_spec button_1_off = GPIO_DT_SPEC_GET_OR(DT_ALIAS(sw1off), gpios, {0});
-static const struct gpio_dt_spec button_2_off = GPIO_DT_SPEC_GET_OR(DT_ALIAS(sw2off), gpios, {0});
-static const struct gpio_dt_spec button_3_off = GPIO_DT_SPEC_GET_OR(DT_ALIAS(sw3off), gpios, {0});
-static const struct gpio_dt_spec button_4_off = GPIO_DT_SPEC_GET_OR(DT_ALIAS(sw4off), gpios, {0});
-static struct gpio_callback button_cb_data_port0;
-static struct gpio_callback button_cb_data_port1;
 static struct k_work_delayable buttons_debounce;
 
 static void mesh_model_button_handler();
 static void lpn_wakeup();
+static void lpn_sleep();
+
+static bool buttons_locked;
+static uint32_t pin_latches;
 
 static void buttons_debounce_fn(struct k_work *work)
 {
-  //lpn_wakeup();
+  lpn_wakeup();
   mesh_model_button_handler();
 }
 
-void button_pressed(const struct device *dev, struct gpio_callback *cb,
-                    uint32_t pins)
+static void gpiote_isr(const void *irq_handler)
 {
+  nrf_gpiote_int_disable(NRF_GPIOTE, GPIOTE_INTENSET_PORT_Msk); 
+  nrf_gpiote_event_clear(NRF_GPIOTE, NRF_GPIOTE_EVENT_PORT); 
+  nrf_gpio_latches_read_and_clear(0,1,&pin_latches); 
   printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
-  k_work_reschedule(&buttons_debounce, K_MSEC(50)); // Debounce the Button
+  if (!buttons_locked){
+    buttons_locked = true;
+    k_work_reschedule(&buttons_debounce, K_MSEC(100)); // Debounce the Button
+  }
 }
 
 //Init Reset Button
 static void buttons_init()
 {
-
-  int ret;
-
-  if (!device_is_ready(button_3_off.port)) {
-		printk("Error: button device %s is not ready\n",
-		       button_3_off.port->name);
-	}
-
-  if (!device_is_ready(button_3_on.port)) {
-		printk("Error: button device %s is not ready\n",
-		       button_3_on.port->name);
-	}
-
-  gpio_pin_configure_dt(&button_1_on, GPIO_INPUT);
-  gpio_pin_interrupt_configure_dt(&button_1_on, GPIO_INT_EDGE_TO_ACTIVE);
-
-  gpio_pin_configure_dt(&button_2_on, GPIO_INPUT);
-  gpio_pin_interrupt_configure_dt(&button_2_on, GPIO_INT_EDGE_TO_ACTIVE);
-
-  ret = gpio_pin_configure_dt(&button_3_on, GPIO_INPUT);
-  if (ret != 0) {
-		printk("Error %d: failed to configure %s pin %d\n",
-		       ret, button_3_on.port->name, button_3_on.pin);
-	
-	}
-  ret = gpio_pin_interrupt_configure_dt(&button_3_on, GPIO_INT_EDGE_TO_ACTIVE);
-  if (ret != 0) {
-		printk("Error %d: failed to configure interrupt on %s pin %d\n",
-			ret, button_3_on.port->name, button_3_on.pin);
-
-	}
-
-  gpio_pin_configure_dt(&button_4_on, GPIO_INPUT);
-  gpio_pin_interrupt_configure_dt(&button_4_on, GPIO_INT_EDGE_TO_ACTIVE);
-
-  gpio_pin_configure_dt(&button_1_off, GPIO_INPUT);
-  gpio_pin_interrupt_configure_dt(&button_1_off, GPIO_INT_EDGE_TO_ACTIVE);
-
-  gpio_pin_configure_dt(&button_2_off, GPIO_INPUT);
-  gpio_pin_interrupt_configure_dt(&button_2_off, GPIO_INT_EDGE_TO_ACTIVE);
-
-  gpio_pin_configure_dt(&button_3_off, GPIO_INPUT);
-  gpio_pin_interrupt_configure_dt(&button_3_off, GPIO_INT_EDGE_TO_ACTIVE);  
-
-  gpio_pin_configure_dt(&button_4_off, GPIO_INPUT);
-  gpio_pin_interrupt_configure_dt(&button_4_off, GPIO_INT_EDGE_TO_ACTIVE);
-
-  gpio_init_callback(&button_cb_data_port1, button_pressed, BIT(button_1_on.pin) | BIT(button_2_on.pin) | BIT(button_2_off.pin) | BIT(button_3_off.pin));
-  gpio_init_callback(&button_cb_data_port0, button_pressed, BIT(button_3_on.pin) | BIT(button_4_on.pin) | BIT(button_1_off.pin) | BIT(button_4_off.pin));
-  
-  gpio_add_callback(button_3_off.port, &button_cb_data_port1); //Port 1
-  ret =  gpio_add_callback(button_3_on.port, &button_cb_data_port0); //Port 0
-  if (ret != 0) {
-		printk("Error %d: failed to configure interrupt on %s pin %d\n",
-			ret, button_3_on.port->name, button_3_on.pin);
-
-	}
-  
-
   k_work_init_delayable(&buttons_debounce, buttons_debounce_fn);
-  // Test Wake UP
-  /* Configure to generate PORT event (wakeup) on button 1 press. 
-	
-	nrf_gpio_cfg_sense_set(DT_GPIO_PIN(DT_NODELABEL(button0), gpios),
-			       NRF_GPIO_PIN_SENSE_LOW);
-  gpio_pin_interrupt_configure_dt(&button_0, GPIO_INT_EDGE_TO_ACTIVE);
-  gpio_init_callback(&button_cb_data, button_pressed, BIT(button_0.pin));
-  gpio_add_callback(button_0.port, &button_cb_data);
 
-  
-  dev = device_get_binding("GPIO_0");
-  ret = gpio_pin_configure(dev, 9, GPIO_INPUT | GPIO_PULL_UP );
-if (ret != 0) {
-		printk("Error %d: failed to configure %s pin %d\n",
-		       ret, button_3_on.port->name, button_3_on.pin);
-	
-	}
-  */
+  /* Configure to generate PORT event (wakeup) on buttons press. */
+  nrf_gpio_cfg_sense_input(DT_GPIO_PIN(DT_ALIAS(sw1on), gpios),NRF_GPIO_PIN_PULLUP,NRF_GPIO_PIN_SENSE_LOW);
+  nrf_gpio_cfg_sense_input(DT_GPIO_PIN(DT_ALIAS(sw2on), gpios),NRF_GPIO_PIN_PULLUP,NRF_GPIO_PIN_SENSE_LOW);
+  nrf_gpio_cfg_sense_input(DT_GPIO_PIN(DT_ALIAS(sw3on), gpios),NRF_GPIO_PIN_PULLUP,NRF_GPIO_PIN_SENSE_LOW);
+  nrf_gpio_cfg_sense_input(DT_GPIO_PIN(DT_ALIAS(sw4on), gpios),NRF_GPIO_PIN_PULLUP,NRF_GPIO_PIN_SENSE_LOW);
+  nrf_gpio_cfg_sense_input(DT_GPIO_PIN(DT_ALIAS(sw1off), gpios),NRF_GPIO_PIN_PULLUP,NRF_GPIO_PIN_SENSE_LOW);
+  nrf_gpio_cfg_sense_input(DT_GPIO_PIN(DT_ALIAS(sw2off), gpios),NRF_GPIO_PIN_PULLUP,NRF_GPIO_PIN_SENSE_LOW);
+  nrf_gpio_cfg_sense_input(DT_GPIO_PIN(DT_ALIAS(sw3off), gpios),NRF_GPIO_PIN_PULLUP,NRF_GPIO_PIN_SENSE_LOW);
+  nrf_gpio_cfg_sense_input(DT_GPIO_PIN(DT_ALIAS(sw4off), gpios),NRF_GPIO_PIN_PULLUP,NRF_GPIO_PIN_SENSE_LOW);
 
+  /* Connect GPIOTE_0 IRQ to nrfx_gpiote_irq_handler */
+	IRQ_CONNECT(DT_IRQN(DT_NODELABEL(gpiote)),
+		    DT_IRQ(DT_NODELABEL(gpiote), priority),
+		    gpiote_isr, NULL, 0);
+
+    NRFX_IRQ_PRIORITY_SET(nrfx_get_irq_number(NRF_GPIOTE), 0);
+    NRFX_IRQ_ENABLE(nrfx_get_irq_number(NRF_GPIOTE));
+    nrf_gpiote_event_clear(NRF_GPIOTE, NRF_GPIOTE_EVENT_PORT);
+    nrf_gpiote_int_enable(NRF_GPIOTE, GPIOTE_INTENSET_PORT_Msk);  
 }
 
 
@@ -199,55 +145,63 @@ static void status_handler(struct bt_mesh_onoff_cli *cli,
 }
 
 static void mesh_model_button_handler()
-{
-  	if (!bt_mesh_is_provisioned()) {
-		return;
-	}
+{  	
   //Check which Button is pressed
-  static int i = 0;
+  static int i = -1;
   static int err;
-  if (gpio_pin_get_dt(&button_1_on) == true)
+  i = -1;
+  
+  printk("L: %u\n",pin_latches);
+
+  if (pin_latches & (1 << DT_GPIO_PIN(DT_ALIAS(sw1on), gpios)))
   {
     i = 0;
     buttons[i].status = true;
-  } else if (gpio_pin_get_dt(&button_1_off) == true)
+  } else if (pin_latches & (1 << DT_GPIO_PIN(DT_ALIAS(sw1off), gpios)))
   {
     i = 0;
     buttons[i].status = false;
-  } else if (gpio_pin_get_dt(&button_2_on) == true)
+  } else if (pin_latches & (1 << DT_GPIO_PIN(DT_ALIAS(sw2on), gpios)))
   {
     i = 1;
     buttons[i].status = true;
-  } else if (gpio_pin_get_dt(&button_2_off) == true)
+  } else if (pin_latches & (1 << DT_GPIO_PIN(DT_ALIAS(sw2off), gpios)))
   {
     i = 1;
     buttons[i].status = false;
-  } else if (gpio_pin_get_dt(&button_3_on) == true)
+  } else if (pin_latches & (1 << DT_GPIO_PIN(DT_ALIAS(sw3on), gpios)))
   {
     i = 2;
     buttons[i].status = true;
-  } else if (gpio_pin_get_dt(&button_3_off) == true)
+  } else if (pin_latches & (1 << DT_GPIO_PIN(DT_ALIAS(sw3off), gpios)))
   {
     i = 2;
     buttons[i].status = false;
-  } else if (gpio_pin_get_dt(&button_4_on) == true)
+  } else if (pin_latches & (1 << DT_GPIO_PIN(DT_ALIAS(sw4on), gpios)))
   {
     i = 3;
     buttons[i].status = true;
-  } else if (gpio_pin_get_dt(&button_4_off) == true)
+  } else if (pin_latches & (1 << DT_GPIO_PIN(DT_ALIAS(sw4off), gpios)))
   {
     i = 3;
     buttons[i].status = false;
   } else 
   {
-    return;
+    printk("Error no button pressed\n");
   }
-  struct bt_mesh_onoff_set set = {.on_off = buttons[i].status,};
-  err = bt_mesh_onoff_cli_set_unack(&buttons[i].client,NULL, &set);
-  if (err) {
-			printk("OnOff %d set failed: %d\n", i + 1, err);
-	}
-  //bt_mesh_lpn_poll();
+  
+  if (bt_mesh_is_provisioned() && (i >= 0)) {    
+    struct bt_mesh_onoff_set set = {.on_off = buttons[i].status,};
+    err = bt_mesh_onoff_cli_set_unack(&buttons[i].client,NULL, &set);
+    if (err) {
+        printk("OnOff %d set failed: %d\n", i + 1, err);
+    }
+    err = bt_mesh_lpn_poll();
+    if (err != 0){
+      printk("Poll Error %d\n",err);
+    }
+  }
+  lpn_sleep();  
 }
 
 /* Health Server definition */
@@ -306,8 +260,18 @@ static void bt_ready(int err)
     settings_load();
   }
 
+  //Check Reboot Condition
+  
+  if ((nrf_gpio_pin_read(DT_GPIO_PIN(DT_ALIAS(sw1on), gpios)) == false) ){
+    printk("Reset Mesh!\n");
+		bt_mesh_reset();
+  }
+
+
   /* This will be a no-op if settings_load() loaded provisioning info */
   bt_mesh_prov_enable(BT_MESH_PROV_ADV | BT_MESH_PROV_GATT);
+
+  /* Check for Friendship */
 
   printk("Mesh initialized\n");
 }
@@ -327,7 +291,7 @@ static void bluetooth_mesh_init()
 	bt_enable(bt_ready);
 }
 
-/* Manual Low Power Node Override 
+/* Manual Low Power Node Override */
 #include <stdio.h>
 #include <zephyr.h>
 #include <device.h>
@@ -336,34 +300,55 @@ static void bluetooth_mesh_init()
 #include <bluetooth/mesh/main.h>
 
 #define CONSOLE_LABEL DT_LABEL(DT_CHOSEN(zephyr_console))
+#define CLOCK_LABEL DT_LABEL(DT_NODELABEL(clock))
 
 const struct device *cons;
+//const struct device *clk;
 
 static void lpn_app_init(){
-  cons = device_get_binding(CONSOLE_LABEL);
+  //cons = device_get_binding(CONSOLE_LABEL);
 }
 
 static void lpn_wakeup(){
-  pm_device_state_set(cons, PM_DEVICE_STATE_ACTIVE);
+  cons = device_get_binding(CONSOLE_LABEL);
+  if (cons == NULL)
+  {
+    printk("No UART Device found\n");
+  } else {
+    pm_device_state_set(cons, PM_DEVICE_STATE_ACTIVE);  
+  }
   printk("Exit System OFF\n");
-  bt_mesh_resume();
+  nrf_gpio_pin_set(DT_GPIO_PIN(DT_ALIAS(led0), gpios)); 
 }
 
 static void lpn_sleep(){
     printk("Enter System OFF\n");
-    pm_device_state_set(cons, PM_DEVICE_STATE_SUSPENDED);
-    bt_mesh_suspend();
-    pm_power_state_force((struct pm_state_info){PM_STATE_SOFT_OFF, 0, 0});
+    nrf_gpio_pin_clear(DT_GPIO_PIN(DT_ALIAS(led0), gpios)); 
+    //Reenable Interrupt
+    buttons_locked = false;
+    nrf_gpiote_event_clear(NRF_GPIOTE, NRF_GPIOTE_EVENT_PORT);
+    nrf_gpio_latches_read_and_clear(0,1,&pin_latches); 
+    nrf_gpiote_int_enable(NRF_GPIOTE, GPIOTE_INTENSET_PORT_Msk); 
+    cons = device_get_binding(CONSOLE_LABEL);
+    if (cons == NULL)
+    {
+      printk("No UART Device found\n");
+    } else {
+      pm_device_state_set(cons, PM_DEVICE_STATE_SUSPENDED);  
+    }   
+    //pm_power_state_force((struct pm_state_info){PM_STATE_SOFT_OFF, 0, 0});
 }
 
 static void lpn_app_established(uint16_t net_idx, uint16_t friend_addr,
 					uint8_t queue_size, uint8_t recv_win)
 {
+  printk("LPN Established\n");
   lpn_sleep();
 }
 
 static void lpn_app_polled(uint16_t net_idx, uint16_t friend_addr, bool retry)
 {
+  printk("LPN Polled\n");
   lpn_sleep();
 }
 
@@ -372,7 +357,9 @@ BT_MESH_LPN_CB_DEFINE(lpn_cb_app) = {
 	.polled = lpn_app_polled,
 };
 
-*/
+
+
+
 
 
 /* ------------------- Main App ---------------------------- */
@@ -380,8 +367,9 @@ BT_MESH_LPN_CB_DEFINE(lpn_cb_app) = {
 void main(void)
 {
   printk("Init Application\n");
+  leds_init();
   buttons_init();
-  //lpn_app_init();
+  lpn_app_init();
   bluetooth_mesh_init();
   printk("Starting Application\n");
 }

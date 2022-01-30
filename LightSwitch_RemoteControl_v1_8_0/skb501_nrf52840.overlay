@@ -1,0 +1,78 @@
+#include <dt-bindings/gpio/gpio.h>
+
+&i2c0 {
+	status = "disabled";
+};
+
+&i2c1 {
+	status = "disabled";
+};
+
+&spi0 {
+	status = "disabled";
+};
+
+&spi1 {
+	status = "disabled";
+};
+
+&uart0 {
+	status = "okay";
+};
+
+/ {
+	leds {
+		compatible = "gpio-leds";
+		led0: led_0 {
+			gpios = <&gpio0 31 GPIO_ACTIVE_LOW>;
+			label = "LED 0";
+		};
+	};
+	buttons {
+		compatible = "gpio-keys";
+		button1on: button_1on {
+			gpios = < &gpio0 26 (GPIO_PULL_UP | GPIO_ACTIVE_LOW) >;
+			label = "Push button switch 1 ON";
+		};
+      button2on: button_2on {
+			gpios = < &gpio0 27 (GPIO_PULL_UP | GPIO_ACTIVE_LOW) >;
+			label = "Push button switch 2 ON";
+		};
+      button3on: button_3on {
+			gpios = < &gpio0 28 (GPIO_PULL_UP | GPIO_ACTIVE_LOW) >;
+			label = "Push button switch 3 ON";
+		};
+      button4on: button_4on {
+			gpios = < &gpio0 29 (GPIO_PULL_UP | GPIO_ACTIVE_LOW) >;
+			label = "Push button switch 4 ON";
+		};
+      button1off: button_1off {
+			gpios = < &gpio0 19 (GPIO_PULL_UP | GPIO_ACTIVE_LOW) >;
+			label = "Push button switch 1 OFF";
+		};
+      button2off: button_2off {
+			gpios = < &gpio0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW) >;
+			label = "Push button switch 2 OFF";
+		};
+      button3off: button_3off {
+			gpios = < &gpio0 21 (GPIO_PULL_UP | GPIO_ACTIVE_LOW) >;
+			label = "Push button switch 3 OFF";
+		};
+      button4off: button_4off {
+			gpios = < &gpio0 22 (GPIO_PULL_UP | GPIO_ACTIVE_LOW) >;
+			label = "Push button switch 4 OFF";
+		};
+	};
+   aliases {
+	led0 = &led0;
+	sw1on = &button1on;
+      sw2on = &button2on;
+      sw3on = &button3on;
+      sw4on = &button4on;
+      sw1off = &button1off;
+      sw2off = &button2off;
+      sw3off = &button3off;
+      sw4off = &button4off;
+
+	};
+};
